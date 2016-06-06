@@ -19,9 +19,9 @@ class Planet():
         self.theta = 0
         
     def move(self, delta):
-        G = 6.67*10**-25
+        G = 6.67*10**-11
         if self.parent != None: #La planète bouge
-            self.theta = sqrt(G*self.parent.mass/(self.dist)**3)*delta + self.theta
+            self.theta = sqrt(G*self.parent.mass/invConvertDist(self.dist)**3)*delta + self.theta
             self.x = -self.dist*sin(self.theta) + self.parent.x
             self.y = self.dist*cos(self.theta) + self.parent.y
 
