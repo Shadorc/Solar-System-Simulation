@@ -7,6 +7,8 @@ frame = Frame()
 objects = []
 
 soleil = Planet(None, "soleil.gif", 1.99e30, 1.39e6, 0)
+soleil.x = frame.frame.winfo_screenwidth()/2
+soleil.y = frame.frame.winfo_screenheight()/2
 mercure = Planet(soleil, "mercure.gif", 3.29e23, 4.88e3, 5.79e7)
 venus = Planet(soleil, "venus.gif", 4.87e24, 1.21e4, 1.08e8)
 terre = Planet(soleil, "terre.gif", 5.97e24, 1.27e4, 1.49e8)
