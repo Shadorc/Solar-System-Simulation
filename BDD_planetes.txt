@@ -1,0 +1,11 @@
+#Nom, masse, diamètre, distance / soleil, température, période de révolution
+Soleil, 1.99e30, 1.39e6, 0, 5778, 0
+Mercure, 3.29e23, 4.88e3, 5.79e7, 433, 58.65
+Vénus, 4.87e24, 1.21e4, 1.08e8, 231.7, 243
+Terre, 5.97e24, 1.27e4, 1.49e8, 288, 365
+Lune, 7.35e22, 3.47e3, 3.84e5, 396, 27
+Mars, 6.42e23, 6.78e3, 2.27e28, 210.1, 687
+Jupiter, 1.90e27, 1.40e5, 7079e8, 110, 4335
+Saturne, 5.68e26, 1.16e5, 1.42e9, 80, 10759
+Uranus, 8.68e25, 5.07e4, 2.88e9, 57, 30685
+Neptune, 1.02e26, 4.92e4, 4.5e9, 46.6, 60189

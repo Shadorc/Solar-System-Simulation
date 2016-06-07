@@ -1,12 +1,21 @@
+from File import *
+
 X=0
 Y=0
+speed=15
+clicked = False
+mousePos=[]
+
+def mouseClicked(event):
+    global clicked, mousePos
+    clicked=True
+    mousePos=[event.x, event.y]
 
 def keyPressed(event) :
     
-    global X,Y
+    global X,Y,speed
     
     touche = event.keysym
-    speed=10
     
     if touche == "Up":
         Y = speed
@@ -37,3 +46,16 @@ def getX() :
     
 def getY() :
     return Y
+
+def getSpeed():
+    return speed
+
+def getClicked():
+    return clicked
+    
+def setClicked(click):
+    global clicked
+    clicked = click
+
+def getMousePos():
+    return mousePos
