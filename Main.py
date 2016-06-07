@@ -32,11 +32,14 @@ objects.append(uranus)
 objects.append(neptune)
 
 FPS=30
+elapsed = 0
 while True:
     frame.univers.delete('all')
     for i in range(len(objects)):
         obj = objects[i]
-        obj.move(1/FPS*31536000)
+        obj.move(1/FPS) #1 sec -> 365 jours (31536000s)
         frame.draw(obj)
+        elapsed += 1/FPS
+        frame.setTime(elapsed)
     frame.frame.update()
     time.sleep(1/FPS)
