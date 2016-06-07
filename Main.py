@@ -23,7 +23,7 @@ while True:
     frame.univers.delete('all')
     for i in range(len(objects)):
         obj = objects[i]
-        obj.move(1/FPS*100)
+        obj.move(1/FPS*31536000)
         frame.draw(obj)
     frame.frame.update()
     time.sleep(1/FPS)

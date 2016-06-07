@@ -13,6 +13,5 @@ class Frame():
         self.univers.pack() 
 
     def draw(self, obj):
-        img = self.univers.create_image(obj.x, obj.y, image=obj.photo, anchor=CENTER)
-        self.univers.coords(img, obj.x, obj.y)
+        self.univers.create_image(obj.x, obj.y, image=obj.photo, anchor=CENTER)
     
