@@ -25,6 +25,6 @@ class Planet():
             self.x = -self.dist*sin(self.theta) + self.parent.x
             self.y = self.dist*cos(self.theta) + self.parent.y
         else : #Déplacement du Soleil
-            self.x = self.x + getSpeedX()
-            self.y = self.y + getSpeedY()
+            self.x = self.x + getSpeedX()*delta
+            self.y = self.y + getSpeedY()*delta
 

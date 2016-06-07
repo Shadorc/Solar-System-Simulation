@@ -2,7 +2,7 @@ from File import *
 
 speedX=0
 speedY=0
-defSpeed=15
+defSpeed=150
 clicked=False
 mousePos=[]
 
