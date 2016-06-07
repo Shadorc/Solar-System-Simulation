@@ -35,18 +35,27 @@ objects.append(uranus)
 objects.append(neptune)
 objects.append(vaisseau)
 
-FPS=30
+FPS=60
+sleepTime = 1/FPS
+increaseTime = 31536000
 elapsed = 0
 while True:
     frame.univers.delete('all')
+    #Parcourt tous les objets, les actualise et les affiche
     for i in range(len(objects)):
         obj = objects[i]
-        obj.move(1/FPS*10000000) #1 sec -> 365 jours (31536000s)
+        obj.move(sleepTime*increaseTime) #1 sec -> 365 jours (31536000s)
         frame.draw(obj)
-        elapsed += 1/FPS*10000000
         frame.setInfos(soleil.x, soleil.y, elapsed)
+    
+    #A retravailler
     if getClicked():
-        frame.createPopup(getInfoPlanet(getPlanetClicked(objects, getMousePos())))
+        try:
+            frame.createPopup(getInfoPlanet(getPlanetClicked(objects, getMousePos())))
+        except:
+            print("Clique en dehors d'une planète")
         setClicked(False)
+        
     frame.frame.update()
-    time.sleep(1/FPS)
+    time.sleep(sleepTime)
+    elapsed += sleepTime*increaseTime

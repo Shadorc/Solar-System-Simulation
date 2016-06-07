@@ -1,9 +1,9 @@
 from File import *
 
-X=0
-Y=0
-speed=15
-clicked = False
+speedX=0
+speedY=0
+defSpeed=15
+clicked=False
 mousePos=[]
 
 def mouseClicked(event):
@@ -11,51 +11,51 @@ def mouseClicked(event):
     clicked=True
     mousePos=[event.x, event.y]
 
+#Touche pressée
 def keyPressed(event) :
-    
-    global X,Y,speed
-    
-    touche = event.keysym
-    
-    if touche == "Up":
-        Y = speed
-    elif touche == "Down":
-        Y = -speed
-    elif touche == "Right":
-        X = -speed
-    elif touche == "Left":
-        X = speed
-        
+    global speedX, speedY, defSpeed
+
+    key = event.keysym
+
+    if key == "Up":
+        speedY = defSpeed
+    elif key == "Down":
+        speedY = -defSpeed
+    elif key == "Right":
+        speedX = -defSpeed
+    elif key == "Left":
+        speedX = defSpeed
+
+#Touche relachée    
 def keyReleased(event) :
+    global speedX, speedY
     
-    global X,Y
-    
-    touche = event.keysym
+    key = event.keysym
 
-    if touche == "Up":
-        Y = 0
-    elif touche == "Down":
-        Y = 0
-    elif touche == "Right":
-        X = 0
-    elif touche == "Left":
-        X = 0
+    if key == "Up":
+        speedY = 0
+    elif key == "Down":
+        speedY = 0
+    elif key == "Right":
+        speedX = 0
+    elif key == "Left":
+        speedX = 0
         
-def getX() :
-    return X
+def getSpeedX() :
+    return speedX
     
-def getY() :
-    return Y
+def getSpeedY() :
+    return speedY
 
-def getSpeed():
-    return speed
+def getDefSpeed():
+    return defSpeed
 
 def getClicked():
     return clicked
     
-def setClicked(click):
+def setClicked(clicked_):
     global clicked
-    clicked = click
+    clicked = clicked_
 
 def getMousePos():
     return mousePos

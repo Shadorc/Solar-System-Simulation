@@ -6,16 +6,16 @@ from KeyListener import *
 class Planet():
     
     def __init__(self, parent, name, mass, diam, dist):
-        self.name = name
         self.parent = parent
-        self.dist = convertDist(dist)
-        if(parent != None): #C'est pas le Soleil
-            self.x = self.parent.x + self.dist
-            self.y = self.parent.y
-        self.photo = PhotoImage(file='images/' + self.name + '.gif')
+        self.name = name
         self.mass = mass
         self.diam = convertDist(diam)
+        self.dist = convertDist(dist)
+        self.photo = PhotoImage(file='images/' + self.name + '.gif')
         self.theta = 0
+        if(self.parent != None): #C'est pas le Soleil
+            self.x = self.parent.x + self.dist
+            self.y = self.parent.y
         
     def move(self, delta):
         G = 6.67e-11
@@ -25,6 +25,6 @@ class Planet():
             self.x = -self.dist*sin(self.theta) + self.parent.x
             self.y = self.dist*cos(self.theta) + self.parent.y
         else : #Déplacement du Soleil
-            self.x = self.x + getX()
-            self.y = self.y + getY()
+            self.x = self.x + getSpeedX()
+            self.y = self.y + getSpeedY()
 
