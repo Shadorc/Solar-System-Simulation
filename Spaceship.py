@@ -9,19 +9,19 @@ class Spaceship():
         self.x = x
         self.y = y
         
-        self.photo = PhotoImage(file="Spaceship_up.gif")
+        self.photo = PhotoImage(file="images/Spaceship_up.gif")
     
 
     def move(self, delta) :
         
         if getX() == -getSpeed() :
-            self.photo = PhotoImage(file="Spaceship_right.gif")
+            self.photo = PhotoImage(file="images/Spaceship_right.gif")
         
         if getX() == getSpeed() :
-            self.photo = PhotoImage(file="Spaceship_left.gif")
+            self.photo = PhotoImage(file="images/Spaceship_left.gif")
             
         if getY() == -getSpeed() :
-            self.photo = PhotoImage(file="Spaceship_down.gif")
+            self.photo = PhotoImage(file="images/Spaceship_down.gif")
             
         if getY() == getSpeed() :
-            self.photo = PhotoImage(file="Spaceship_up.gif")
+            self.photo = PhotoImage(file="images/Spaceship_up.gif")
