@@ -12,8 +12,8 @@ class Frame():
         self.univers = Canvas(self.frame, width=self.frameW, height=self.frameH)
         self.univers.configure(background='black')
         self.univers.focus_set()
-        self.univers.bind("<KeyPress>",keyPressed)
-        self.univers.bind("<KeyRelease>",keyReleased)
+        self.univers.bind("<KeyPress>", keyPressed)
+        self.univers.bind("<KeyRelease>", keyReleased)
         self.univers.pack()
 
         self.v = StringVar()
@@ -24,4 +24,4 @@ class Frame():
         self.univers.create_image(obj.x, obj.y, image=obj.photo, anchor=CENTER)
 
     def setTime(self, elapsed):
-        self.v.set(round(elapsed/31536000))
+        self.v.set(round(elapsed))

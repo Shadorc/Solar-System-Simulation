@@ -19,7 +19,7 @@ class Planet():
     def move(self, delta):
         G = 6.67e-11
         if self.parent != None: #La planète bouge
-            distM = invConvertDist(self.dist)*10**3 #Reconvertie la distance en km puis en m
+            distM = invConvertDist(self.dist)*10**3 #Reconvertit la distance en km puis en m
             self.theta = sqrt(G*self.parent.mass/distM**3)*delta + self.theta
             self.x = -self.dist*sin(self.theta) + self.parent.x
             self.y = self.dist*cos(self.theta) + self.parent.y
