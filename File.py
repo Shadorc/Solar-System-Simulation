@@ -24,4 +24,7 @@ def getMenu():
         line = lines[i]
         mots = line.split(', ')
         if mots[0] == planetName:
-            return mots
+            return mots        infos = line.split(', ')
+        if infos[0] == planetName:
+            return infos
+    return None

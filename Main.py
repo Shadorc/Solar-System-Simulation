@@ -60,12 +60,12 @@ while True:
         frame.draw(obj)
         frame.setInfos(soleil.x, soleil.y, elapsed)
     
-    #A retravailler
+    #SI l'utilisateur a cliqué affiche les infos de la planète
     if getClicked():
-        try:
-            frame.createPopup(getInfoPlanet(getPlanetClicked(objects, getMousePos())))
-        except:
-            print("Clique en dehors d'une planète")
+        infoPlanet = getInfoPlanet(getPlanetClicked(objects, getMousePos()))
+        #S'il n'a pas cliqué en dehors d'une planète        
+        if infoPlanet != None:
+            frame.createPopup(infoPlanet)
         setClicked(False)
         
     frame.frame.update()
