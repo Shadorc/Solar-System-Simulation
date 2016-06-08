@@ -42,7 +42,6 @@ class Frame():
         +"\nPériode de révolution : " +str(list[5])+"jours")
         msg.pack()
         
-
         button = Button(top, text="Fermer", command=top.destroy)
         button.pack()
 

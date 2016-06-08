@@ -1,5 +1,3 @@
-##Importation des différents modules, initialisation
-
 from Planet import *
 from Spaceship import *
 from Frame import *
@@ -10,26 +8,21 @@ frame = Frame()
 objects = []
 
 ##Appel des fonctions pour le système solaire et le vaisseau
-
-#Soleil
-soleil = Planet(None, "Soleil", 1.99e30, 1.39e6, 0)
+soleil = Planet(None, "Soleil", 1.99e30, 1.39e6, 0, 0)
 soleil.x = frame.frame.winfo_screenwidth()/2
 soleil.y = frame.frame.winfo_screenheight()/2
 
-#Planètes + lune
-mercure = Planet(soleil, "Mercure", 3.29e23, 4.88e3, 5.79e7)
-venus = Planet(soleil, "Venus", 4.87e24, 1.21e4, 1.08e8)
-terre = Planet(soleil, "Terre", 5.97e24, 1.27e4, 1.49e8)
-lune = Planet(terre, "Lune", 7.35e22, 3.47e3, 3.84e5)
-mars = Planet(soleil, "Mars", 6.42e23, 6.78e3, 2.27e8)
-jupiter = Planet(soleil, "Jupiter", 1.90e27, 1.40e5, 7.79e8) 
-saturne = Planet(soleil, "Saturne", 5.68e26, 1.16e5, 1.42e9)
-uranus = Planet(soleil, "Uranus", 8.68e25, 5.07e4, 2.88e9)
-neptune = Planet(soleil, "Neptune", 1.02e26, 4.92e4, 4.50e9)
+mercure = Planet(soleil, "Mercure", 3.29e23, 4.88e3, 5.79e7, 61.76)
+venus = Planet(soleil, "Venus", 4.87e24, 1.21e4, 1.08e8, -1.2)
+terre = Planet(soleil, "Terre", 5.97e24, 1.27e4, 1.49e8, 0)
+lune = Planet(terre, "Lune", 7.35e22, 3.47e3, 3.84e5, 0)
+mars = Planet(soleil, "Mars", 6.42e23, 6.78e3, 2.27e8, 7.37)
+jupiter = Planet(soleil, "Jupiter", 1.90e27, 1.40e5, 7.79e8, 82.87) 
+saturne = Planet(soleil, "Saturne", 5.68e26, 1.16e5, 1.42e9, 5.32)
+uranus = Planet(soleil, "Uranus", 8.68e25, 5.07e4, 2.88e9, -54.7)
+neptune = Planet(soleil, "Neptune", 1.02e26, 4.92e4, 4.50e9, -96.2)
 
 vaisseau = Spaceship(soleil.x, soleil.y)
-
-##Affichage 
 
 objects.append(soleil)
 objects.append(mercure)
@@ -47,7 +40,7 @@ objects.append(vaisseau)
 
 FPS=60
 sleepTime = 1/FPS
-increaseTime = 31536000
+increaseTime = 1
 elapsed = 0
 while True:
     frame.univers.delete('all')

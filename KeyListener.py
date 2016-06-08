@@ -13,12 +13,35 @@ def mouseClicked(event):
     global clicked, mousePos
     clicked=True
     mousePos=[event.x, event.y]
-
-"""Touches directionnelles"""
-def scrollPressed(event) :
-    global speedX, speedY, defSpeed
-
+    
+def keyReleased(event) :
+    global megazoom, speedX, speedY
+    
     key = event.keysym
+    
+    if key == "a" :
+        megazoom = 1
+    elif key == "q" :
+        megazoom = 1
+
+    if key == "Up":
+        speedY = 0
+    elif key == "Down":
+        speedY = 0
+    elif key == "Right":
+        speedX = 0
+    elif key == "Left":
+        speedX = 0
+    
+def keyPressed(event) :
+    global megazoom, speedX, speedY, defSpeed
+    
+    key = event.keysym
+    
+    if key == "a" :
+        megazoom = 1.1
+    elif key == "q" :
+        megazoom = 1/1.1
 
     if key == "Up":
         speedY = defSpeed
@@ -28,42 +51,6 @@ def scrollPressed(event) :
         speedX = -defSpeed
     elif key == "Left":
         speedX = defSpeed
-
-"""Touches directionnelles relachées"""   
-def scrollReleased(event) :
-    global speedX, speedY
-    
-    key = event.keysym
-
-    if key == "Up":
-        speedY = 0
-    elif key == "Down":
-        speedY = 0
-    elif key == "Right":
-        speedX = 0
-    elif key == "Left":
-        speedX = 0
-
-def zoomPressed(event) :
-    global megazoom
-    
-    key = event.keysym
-    
-    if key == "a" :
-        megazoom = 1.1
-    elif key == "q" :
-        megazoom = 1/1.1
-        
-        
-def zoomReleased(event) :
-    global megazoom
-    
-    key = event.keysym
-    
-    if key == "a" :
-        megazoom = 1
-    elif key == "q" :
-        megazoom = 1
 
 def getSpeedX() :
     return speedX
@@ -86,11 +73,3 @@ def getMousePos():
 
 def getMegazoom() :
     return megazoom
-
-def keyReleased(event) :
-    zoomReleased(event)
-    scrollReleased(event)
-    
-def keyPressed(event) :
-    zoomPressed(event)
-    scrollPressed(event)
