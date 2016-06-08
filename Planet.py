@@ -1,17 +1,11 @@
-#Importation des différents modules
 from math import *
 from Maths import *
 from tkinter import *
 from KeyListener import *
 
-
-
-
 class Planet():
-    
-    
+
     def __init__(self, parent, name, mass, diam, dist):
-        
         self.parent = parent
         self.name = name
         self.mass = mass
@@ -36,4 +30,3 @@ class Planet():
         else : #Déplacement du Soleil
             self.x = self.x + getSpeedX()
             self.y = self.y + getSpeedY()
-

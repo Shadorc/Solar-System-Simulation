@@ -1,15 +1,12 @@
-#Importation des différents modules
 from tkinter import *
 from KeyListener import *
 
-#Classe "vaisseau"
 class Spaceship():
     
     def __init__(self, x, y):
         self.x = x
         self.y = y
         self.photo = PhotoImage(file="images/Spaceship_up.gif")
-    
 
     def move(self, delta) :
         """Permet de gérer l'affichage du vaisseau selon sons sens de déplacement"""

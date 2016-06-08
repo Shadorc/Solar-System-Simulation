@@ -9,8 +9,6 @@ frame = Frame()
 
 objects = []
 
-
-
 ##Appel des fonctions pour le système solaire et le vaisseau
 
 #Soleil
@@ -60,7 +58,7 @@ while True:
         frame.draw(obj)
         frame.setInfos(soleil.x, soleil.y, elapsed)
     
-    #SI l'utilisateur a cliqué affiche les infos de la planète
+    #Si l'utilisateur a cliqué affiche les infos de la planète
     if getClicked():
         infoPlanet = getInfoPlanet(getPlanetClicked(objects, getMousePos()))
         #S'il n'a pas cliqué en dehors d'une planète        

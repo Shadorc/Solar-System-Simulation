@@ -1,7 +1,5 @@
-#Fonction
+"""Fonction récupérant les informations intéressantes sur une planète"""
 def getInfoPlanet(planetName):
-    """Fonction récupérant les informations intéressantes sur une planète"""
-    
     file = open('BDD_planetes.txt', 'r')
     lines = file.readlines()
     file.close()

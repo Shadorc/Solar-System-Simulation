@@ -3,7 +3,6 @@ from tkinter import *
 from Maths import *
 from KeyListener import *
 
-
 #Classe pour l'affichage
 class Frame():
     
