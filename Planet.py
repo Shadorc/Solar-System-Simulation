@@ -8,15 +8,15 @@ from KeyListener import *
 
 class Planet():
 
-    def __init__(self, parent, name, mass, diam, dist):
+    def __init__(self, parent, name, mass, diam, dist, theta):
         self.parent = parent
         self.name = name
         self.mass = mass
         self.diam = convertDist(diam)
         self.dist = convertDist(dist)
         self.distini = self.dist
+        self.theta = theta*(pi/180)
         self.photo = PhotoImage(file='images/' + self.name + '.gif')
-        self.theta = 0
         if(self.parent != None): #C'est pas le Soleil
             self.x = self.parent.x + self.dist
             self.y = self.parent.y
