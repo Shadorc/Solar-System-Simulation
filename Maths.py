@@ -1,3 +1,6 @@
+import os
+os.chdir("C:/Users/Telly/Desktop/TIPE/TIPE Github/TIPE")
+
 from math import *
 from KeyListener import *
 

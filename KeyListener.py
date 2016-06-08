@@ -1,3 +1,6 @@
+import os
+os.chdir("C:/Users/Telly/Desktop/TIPE/TIPE Github/TIPE")
+
 from File import *
 
 #Initialisation
@@ -50,9 +53,9 @@ def zoomPressed(event) :
     key = event.keysym
     
     if key == "a" :
-        megazoom = 1.1
+        megazoom = 1.05
     elif key == "q" :
-        megazoom = 1/1.1
+        megazoom = 1/1.05
         
         
 def zoomReleased(event) :

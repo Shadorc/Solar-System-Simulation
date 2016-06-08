@@ -1,3 +1,6 @@
+import os
+os.chdir("C:/Users/Telly/Desktop/TIPE/TIPE Github/TIPE")
+
 ##Importation des différents modules, initialisation
 
 from Planet import *

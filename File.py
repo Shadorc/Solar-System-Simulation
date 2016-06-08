@@ -1,3 +1,6 @@
+import os
+os.chdir("C:/Users/Telly/Desktop/TIPE/TIPE Github/TIPE")
+
 """Fonction récupérant les informations intéressantes sur une planète"""
 def getInfoPlanet(planetName):
     file = open('BDD_planetes.txt', 'r')

@@ -1,3 +1,6 @@
+import os
+os.chdir("C:/Users/Telly/Desktop/TIPE/TIPE Github/TIPE")
+
 from math import *
 from Maths import *
 from tkinter import *
