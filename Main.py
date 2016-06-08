@@ -12,15 +12,15 @@ soleil = Planet(None, "Soleil", 1.99e30, 1.39e6, 0, 0)
 soleil.x = frame.frame.winfo_screenwidth()/2
 soleil.y = frame.frame.winfo_screenheight()/2
 
-mercure = Planet(soleil, "Mercure", 3.29e23, 4.88e3, 5.79e7, 61.76)
-venus = Planet(soleil, "Venus", 4.87e24, 1.21e4, 1.08e8, -1.2)
-terre = Planet(soleil, "Terre", 5.97e24, 1.27e4, 1.49e8, 0)
-lune = Planet(terre, "Lune", 7.35e22, 3.47e3, 3.84e5, 0)
-mars = Planet(soleil, "Mars", 6.42e23, 6.78e3, 2.27e8, 7.37)
-jupiter = Planet(soleil, "Jupiter", 1.90e27, 1.40e5, 7.79e8, 82.87) 
-saturne = Planet(soleil, "Saturne", 5.68e26, 1.16e5, 1.42e9, 5.32)
-uranus = Planet(soleil, "Uranus", 8.68e25, 5.07e4, 2.88e9, -54.7)
-neptune = Planet(soleil, "Neptune", 1.02e26, 4.92e4, 4.50e9, -96.2)
+mercure = Planet(soleil, "Mercure", 3.29e23, 4.88e3, 5.79e7, 308)
+venus = Planet(soleil, "Venus", 4.87e24, 1.21e4, 1.08e8, 168)
+terre = Planet(soleil, "Terre", 5.97e24, 1.27e4, 1.49e8, 175)
+lune = Planet(terre, "Lune", 7.35e22, 3.47e3, 3.84e5, 113.8)
+mars = Planet(soleil, "Mars", 6.42e23, 6.78e3, 2.27e8, 313)
+jupiter = Planet(soleil, "Jupiter", 1.90e27, 1.40e5, 7.79e8, 309) 
+saturne = Planet(soleil, "Saturne", 5.68e26, 1.16e5, 1.42e9, 168)
+uranus = Planet(soleil, "Uranus", 8.68e25, 5.07e4, 2.88e9, 353)
+neptune = Planet(soleil, "Neptune", 1.02e26, 4.92e4, 4.50e9, 324)
 
 vaisseau = Spaceship(soleil.x, soleil.y)
 
