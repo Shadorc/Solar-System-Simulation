@@ -1,6 +1,8 @@
+#Importation des différents modules
 from tkinter import *
 from KeyListener import *
 
+#Classe "vaisseau"
 class Spaceship():
     
     def __init__(self, x, y):
@@ -10,11 +12,13 @@ class Spaceship():
     
 
     def move(self, delta) :
+        """Permet de gérer l'affichage du vaisseau selon sons sens de déplacement"""
+        
         if getSpeedX() == -getDefSpeed() :
             self.photo = PhotoImage(file="images/Spaceship_right.gif")
-        if getSpeedX() == getDefSpeed() :
+        elif getSpeedX() == getDefSpeed() :
             self.photo = PhotoImage(file="images/Spaceship_left.gif")
-        if getSpeedY() == -getDefSpeed() :
+        elif getSpeedY() == -getDefSpeed() :
             self.photo = PhotoImage(file="images/Spaceship_down.gif")
-        if getSpeedY() == getDefSpeed() :
+        elif getSpeedY() == getDefSpeed() :
             self.photo = PhotoImage(file="images/Spaceship_up.gif")

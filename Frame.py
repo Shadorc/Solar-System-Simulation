@@ -1,7 +1,10 @@
+#Importation des différents modules
 from tkinter import *
 from Maths import *
 from KeyListener import *
 
+
+#Classe pour l'affichage
 class Frame():
     
     def __init__(self):
@@ -26,6 +29,7 @@ class Frame():
         self.univers.bind("<KeyPress>", keyPressed)
         self.univers.bind("<KeyRelease>", keyReleased)
         self.univers.bind("<Button-1>", mouseClicked)
+        
         self.univers.pack()
         panel.add(self.univers)
 
@@ -39,10 +43,22 @@ class Frame():
         button = Button(top, text="Fermer", command=top.destroy)
         button.pack()
 
+
+    # def createMenu(self, list_menu):
+    #     top = Toplevel()
+    #     top.title("Menu "+ str(list_menu[0]))
+    # 
+    #     msg_menu = Message(top, text_menu=list_menu)
+    #     msg_menu.pack()
+    # 
+    #     button = Button(top, text="Fermer", command=top.destroy)
+    #     button.pack()
+
+
     def draw(self, obj):
         self.univers.create_image(obj.x, obj.y, image=obj.photo, anchor=CENTER)
 
     #Modifie les infos dans l'en-tête
     def setInfos(self, x, y, elapsed):
-        self.textCoords.set('Coordonnées X:' + str(self.frameW/2-x) + " Y:" 
+        self.textCoords.set('Coordonnées du vaisseau X:' + str(self.frameW/2-x) + " Y:" 
         + str(y-self.frameH/2) + "\nTemps: " + str(round(elapsed)) + "sec")

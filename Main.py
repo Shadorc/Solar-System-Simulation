@@ -1,16 +1,28 @@
+##Importation des différents modules, initialisation
+
 from Planet import *
 from Spaceship import *
 from Frame import *
+from Menu import *
+import matplotlib.pyplot as plt
 import time
 
 frame = Frame()
 
 objects = []
+# x = []
+# y = []
 
+
+
+##Appel des fonctions pour le système solaire et le vaisseau
+
+#Soleil
 soleil = Planet(None, "Soleil", 1.99e30, 1.39e6, 0)
 soleil.x = frame.frame.winfo_screenwidth()/2
 soleil.y = frame.frame.winfo_screenheight()/2
 
+#Planètes + lune
 mercure = Planet(soleil, "Mercure", 3.29e23, 4.88e3, 5.79e7)
 venus = Planet(soleil, "Venus", 4.87e24, 1.21e4, 1.08e8)
 terre = Planet(soleil, "Terre", 5.97e24, 1.27e4, 1.49e8)
@@ -22,6 +34,8 @@ uranus = Planet(soleil, "Uranus", 8.68e25, 5.07e4, 2.88e9)
 neptune = Planet(soleil, "Neptune", 1.02e26, 4.92e4, 4.50e9)
 
 vaisseau = Spaceship(soleil.x, soleil.y)
+
+##Affichage 
 
 objects.append(soleil)
 objects.append(mercure)
@@ -35,10 +49,38 @@ objects.append(uranus)
 objects.append(neptune)
 objects.append(vaisseau)
 
+# x.append(soleil)
+# x.append(mercure)
+# x.append(venus)
+# x.append(terre)
+# x.append(lune)
+# x.append(mars)
+# x.append(jupiter)
+# x.append(saturne)
+# x.append(uranus)
+# x.append(neptune)
+# x.append(vaisseau)
+# 
+# y.append(soleil)
+# y.append(mercure)
+# y.append(venus)
+# y.append(terre)
+# y.append(lune)
+# y.append(mars)
+# y.append(jupiter)
+# y.append(saturne)
+# y.append(uranus)
+# y.append(neptune)
+# y.append(vaisseau)
+
+
+##Boucle principale
+
 FPS=60
 sleepTime = 1/FPS
-increaseTime = 5
+increaseTime = 31536000
 elapsed = 0
+
 while True:
     frame.univers.delete('all')
     #Parcourt tous les objets, les actualise et les affiche
@@ -53,7 +95,7 @@ while True:
         try:
             frame.createPopup(getInfoPlanet(getPlanetClicked(objects, getMousePos())))
         except:
-            print("Clique en dehors d'une planète")
+            print("Clic en dehors d'une planète")
         setClicked(False)
         
     frame.frame.update()
