@@ -1,6 +1,7 @@
 #Importation des différents modules
 from File import *
 
+from File import *
 
 #Initialisation
 speedX=0
@@ -8,10 +9,7 @@ speedY=0
 defSpeed=15
 clicked=False
 mousePos=[]
-megazoom = 1
-
-
-## Fonctions gérant les évènements
+megazoom=1
 
 def mouseClicked(event):
     """'Clics' de souris"""
@@ -38,19 +36,6 @@ def scrollPressed(event) :
     elif key == "Left":
         speedX = defSpeed
 
-
-def zoomPressed(event):
-    """Zoom (+) ou dézoom (-)"""
-    
-    global megazoom
-    key = event.keysym
-    
-    if key == "z" :
-        megazoom = 1.1
-    elif key == "s" :
-        megazoom = 1/1.1
-        
-        
 #Touche relachée    
 def scrollReleased(event) :
     """Touches directionnelles"""
@@ -68,30 +53,28 @@ def scrollReleased(event) :
     elif key == "Left":
         speedX = 0
 
-
-def zoomReleased(event):
-    """Zoom ou dézoom"""
-    
+def zoomPressed(event) :
     global megazoom
+    
     key = event.keysym
     
-    if key == "z" or key == "s":
+    if key == "a" :
+        megazoom = 1.1
+    elif key == "q" :
+        megazoom = 1/1.1
+        
+        
+def zoomReleased(event) :
+    global megazoom
+    
+    key = event.keysym
+    
+    if key == "a" :
+        megazoom = 1
+    elif key == "q" :
         megazoom = 1
 
-
-#Fonctions globales
-def keyPressed(event):
-    scrollPressed(event)
-    zoomPressed(event)
-
-def keyReleased(event):
-    scrollReleased(event)
-    zoomReleased(event)
-
-
-
-## Fonctions "récupératrices"
-
+        
 def getSpeedX() :
     return speedX
     
@@ -111,5 +94,23 @@ def setClicked(clicked_):
 def getMousePos():
     return mousePos
 
-def getMegazoom():
+def getMegazoom() :
     return megazoom
+
+
+
+
+
+##Fonction globale :
+
+
+def keyReleased(event) :
+
+    zoomReleased(event)
+    scrollReleased(event)
+    
+    
+def keyPressed(event) :
+
+    zoomPressed(event)
+    scrollPressed(event)

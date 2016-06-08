@@ -5,10 +5,13 @@ from tkinter import *
 from KeyListener import *
 
 
-#Classe pour les planètes
+
+
 class Planet():
     
+    
     def __init__(self, parent, name, mass, diam, dist):
+        
         self.parent = parent
         self.name = name
         self.mass = mass
@@ -25,7 +28,7 @@ class Planet():
         """Décrit les trajectoires des planètes"""
         G = 6.67e-11
         if self.parent != None: #La planète bouge
-            self.dist = self.dist*getMegazoom()
+            self.dist=self.dist*getMegazoom()
             distM = invConvertDist(self.distini)*10**3 #Reconvertit la distance en km puis en m
             self.theta = sqrt(G*self.parent.mass/distM**3)*delta + self.theta
             self.x = -self.dist*sin(self.theta) + self.parent.x
@@ -33,3 +36,4 @@ class Planet():
         else : #Déplacement du Soleil
             self.x = self.x + getSpeedX()
             self.y = self.y + getSpeedY()
+

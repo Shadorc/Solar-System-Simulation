@@ -3,15 +3,11 @@
 from Planet import *
 from Spaceship import *
 from Frame import *
-from Menu import *
-import matplotlib.pyplot as plt
 import time
 
 frame = Frame()
 
 objects = []
-# x = []
-# y = []
 
 
 
@@ -49,38 +45,12 @@ objects.append(uranus)
 objects.append(neptune)
 objects.append(vaisseau)
 
-# x.append(soleil)
-# x.append(mercure)
-# x.append(venus)
-# x.append(terre)
-# x.append(lune)
-# x.append(mars)
-# x.append(jupiter)
-# x.append(saturne)
-# x.append(uranus)
-# x.append(neptune)
-# x.append(vaisseau)
-# 
-# y.append(soleil)
-# y.append(mercure)
-# y.append(venus)
-# y.append(terre)
-# y.append(lune)
-# y.append(mars)
-# y.append(jupiter)
-# y.append(saturne)
-# y.append(uranus)
-# y.append(neptune)
-# y.append(vaisseau)
-
-
 ##Boucle principale
 
 FPS=60
 sleepTime = 1/FPS
 increaseTime = 31536000
 elapsed = 0
-
 while True:
     frame.univers.delete('all')
     #Parcourt tous les objets, les actualise et les affiche
@@ -95,7 +65,7 @@ while True:
         try:
             frame.createPopup(getInfoPlanet(getPlanetClicked(objects, getMousePos())))
         except:
-            print("Clic en dehors d'une planète")
+            print("Clique en dehors d'une planète")
         setClicked(False)
         
     frame.frame.update()
