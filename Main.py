@@ -40,7 +40,7 @@ objects.append(vaisseau)
 
 FPS=60
 sleepTime = 1/FPS
-increaseTime = 1
+increaseTime = 31536000
 elapsed = 0
 while True:
     frame.univers.delete('all')

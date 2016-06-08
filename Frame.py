@@ -63,4 +63,4 @@ class Frame():
     #Modifie les infos dans l'en-tête
     def setInfos(self, x, y, elapsed):
         self.textCoords.set('Coordonnées du vaisseau X:' + str(self.frameW/2-x) + " Y:" 
-        + str(y-self.frameH/2) + "\nTemps: " + str(round(elapsed)) + "sec")
+        + str(y-self.frameH/2) + "\nTemps: " + str(round(elapsed/31536000)) + "ans")

@@ -15,14 +15,9 @@ def mouseClicked(event):
     mousePos=[event.x, event.y]
     
 def keyReleased(event) :
-    global megazoom, speedX, speedY
+    global speedX, speedY
     
     key = event.keysym
-    
-    if key == "a" :
-        megazoom = 1
-    elif key == "q" :
-        megazoom = 1
 
     if key == "Up":
         speedY = 0
@@ -37,11 +32,11 @@ def keyPressed(event) :
     global megazoom, speedX, speedY, defSpeed
     
     key = event.keysym
-    
+    print(megazoom)
     if key == "a" :
-        megazoom = 1.1
+        megazoom /= 1.1
     elif key == "q" :
-        megazoom = 1/1.1
+        megazoom *= 1.1
 
     if key == "Up":
         speedY = defSpeed
