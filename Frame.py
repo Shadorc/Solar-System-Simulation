@@ -13,6 +13,10 @@ class Frame():
         self.frameW = self.frame.winfo_screenwidth()
         self.frameH = self.frame.winfo_screenheight()
         
+        self.time=DoubleVar()
+        scale = Scale(self.frame, from_=0, to=200000000, orient=HORIZONTAL, variable=self.time)
+        scale.pack()
+        
         panel = PanedWindow(self.frame, orient=VERTICAL)
         panel.pack(expand=1, fill=BOTH)
 
