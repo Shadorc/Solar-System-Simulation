@@ -1,14 +1,15 @@
 from File import *
 
-#Initialisation
+defSpeed=15
+maxSpeed=defSpeed*3
 speedScrollX=0
 speedScrollY=0
 speedSpaceX=0
 speedSpaceY=0
-defSpeed=15
+
 clicked=False
 mousePos=[]
-megazoom=1
+zoom=1
 
 """'Clics' de souris"""
 def mouseClicked(event):
@@ -16,51 +17,37 @@ def mouseClicked(event):
     clicked=True
     mousePos=[event.x, event.y]
     
-def keyReleased(event) :
-    global speedSpaceX, speedSpaceY
-    
-    key = event.keysym
-    
-    # if key == "z":
-    #     speedSpaceY = 0
-    # if key == "s":
-    #     speedSpaceY = 0
-    # if key == "q":
-    #     speedSpaceX = 0
-    # if key == "d":
-    #     speedSpaceX = 0
-
-    
 def keyPressed(event) :
-    global megazoom, speedSpaceX, speedSpaceY, defSpeed
+    global zoom, speedSpaceX, speedSpaceY, defSpeed
     
     key = event.keysym
 
+    #Zoom
     if key == "a" :
-        megazoom /= 1.1
+        zoom /= 1.1
     elif key == "e" :
-        megazoom *= 1.1
+        zoom *= 1.1
     
     #Déplacements du vaisseau
-    if key == "z" and speedSpaceY < defSpeed*3:
+    if key == "z" and speedSpaceY < maxSpeed:
         speedSpaceY -= defSpeed
-    if key == "s" and speedSpaceY < defSpeed*3:
+    if key == "s" and speedSpaceY < maxSpeed:
         speedSpaceY += defSpeed
-    if key == "q" and speedSpaceX < defSpeed*3:
+    if key == "q" and speedSpaceX < maxSpeed:
         speedSpaceX -= defSpeed
-    if key == "d" and speedSpaceX < defSpeed*3:
+    if key == "d" and speedSpaceX < maxSpeed:
         speedSpaceX += defSpeed
 
 
 def getSpeedScrollX() :
     return speedScrollX
+    
+def getSpeedScrollY() :
+    return speedScrollY
 
 def setSpeedScrollX(speedScrollX_):
     global speedScrollX
     speedScrollX = speedScrollX_
-    
-def getSpeedScrollY() :
-    return speedScrollY
 
 def setSpeedScrollY(speedScrollY_):
     global speedScrollY
@@ -85,5 +72,5 @@ def setClicked(clicked_):
 def getMousePos():
     return mousePos
 
-def getMegazoom() :
-    return megazoom
+def getZoom() :
+    return zoom
