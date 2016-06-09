@@ -10,11 +10,15 @@ class Spaceship():
 
     def move(self, delta) :
         """Permet de gérer l'affichage du vaisseau selon sons sens de déplacement"""
-        if getSpeedX() == -getDefSpeed() :
+        factor = 10**-5
+        self.x = getSpeedSpaceX()*delta*factor + self.x + getSpeedScrollX()
+        self.y = getSpeedSpaceY()*delta*factor + self.y + getSpeedScrollY()
+
+        if getSpeedSpaceX() == getDefSpeed() :
             self.photo = PhotoImage(file="images/Spaceship_right.gif")
-        elif getSpeedX() == getDefSpeed() :
+        elif getSpeedSpaceX() == -getDefSpeed() :
             self.photo = PhotoImage(file="images/Spaceship_left.gif")
-        elif getSpeedY() == -getDefSpeed() :
+        elif getSpeedSpaceY() == getDefSpeed() :
             self.photo = PhotoImage(file="images/Spaceship_down.gif")
-        elif getSpeedY() == getDefSpeed() :
+        elif getSpeedSpaceY() == -getDefSpeed() :
             self.photo = PhotoImage(file="images/Spaceship_up.gif")

@@ -45,7 +45,7 @@ elapsed = 0
 startloop = time.time()
 
 while True:
-    delta = time.time()-startloop #Le temps qu'il s'est écoulé depuis le dernier tour de boucle
+    delta = time.time()-startloop #Le temps qu'il s'eqdzaest écoulé depuis le dernier tour de boucle
     startloop = time.time()
     
     increaseTime=frame.time.get()*2.628e6

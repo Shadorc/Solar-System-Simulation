@@ -1,8 +1,10 @@
 from File import *
 
 #Initialisation
-speedX=0
-speedY=0
+speedScrollX=0
+speedScrollY=0
+speedSpaceX=0
+speedSpaceY=0
 defSpeed=15
 clicked=False
 mousePos=[]
@@ -15,43 +17,67 @@ def mouseClicked(event):
     mousePos=[event.x, event.y]
     
 def keyReleased(event) :
-    global speedX, speedY
+    global speedSpaceX, speedSpaceY, speedScrollX, speedScrollY
     
     key = event.keysym
+    
+    if key == "z":
+        speedSpaceY = 0
+    if key == "s":
+        speedSpaceY = 0
+    if key == "q":
+        speedSpaceX = 0
+    if key == "d":
+        speedSpaceX = 0
 
     if key == "Up":
-        speedY = 0
-    elif key == "Down":
-        speedY = 0
-    elif key == "Right":
-        speedX = 0
-    elif key == "Left":
-        speedX = 0
+        speedScrollY = 0
+    if key == "Down":
+        speedScrollY = 0
+    if key == "Right":
+        speedScrollX = 0
+    if key == "Left":
+        speedScrollX = 0
     
 def keyPressed(event) :
-    global megazoom, speedX, speedY, defSpeed
+    global megazoom, speedSpaceX, speedSpaceY, speedScrollX, speedScrollY, defSpeed
     
     key = event.keysym
-    print(megazoom)
+
     if key == "a" :
         megazoom /= 1.1
-    elif key == "q" :
+    elif key == "e" :
         megazoom *= 1.1
-
+        
+    if key == "z":
+        speedSpaceY=-defSpeed
+    if key == "s":
+        speedSpaceY = defSpeed
+    if key == "q":
+        speedSpaceX = -defSpeed
+    if key == "d":
+        speedSpaceX = defSpeed
+        
     if key == "Up":
-        speedY = defSpeed
-    elif key == "Down":
-        speedY = -defSpeed
-    elif key == "Right":
-        speedX = -defSpeed
-    elif key == "Left":
-        speedX = defSpeed
+        speedScrollY = defSpeed
+    if key == "Down":
+        speedScrollY = -defSpeed
+    if key == "Right":
+        speedScrollX = -defSpeed
+    if key == "Left":
+        speedScrollX = defSpeed
 
-def getSpeedX() :
-    return speedX
+def getSpeedScrollX() :
+    return speedScrollX
     
-def getSpeedY() :
-    return speedY
+def getSpeedScrollY() :
+    return speedScrollY
+    
+def getSpeedSpaceX() :
+    return speedSpaceX
+    
+def getSpeedSpaceY() :
+    return speedSpaceY
 
 def getDefSpeed():
     return defSpeed
