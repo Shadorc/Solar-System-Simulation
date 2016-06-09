@@ -14,7 +14,8 @@ class Frame():
         self.frameH = self.frame.winfo_screenheight()
         
         self.time=DoubleVar()
-        scale = Scale(self.frame, from_=0, to=200000000, orient=HORIZONTAL, variable=self.time)
+        scale = Scale(self.frame, from_=-12, to=12, orient=HORIZONTAL, variable=self.time, length=200, sliderlength=20, label='mois/sec')
+        scale.set(1)
         scale.pack()
         
         panel = PanedWindow(self.frame, orient=VERTICAL)

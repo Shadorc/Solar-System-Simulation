@@ -1,8 +1,10 @@
 from File import *
 
 #Initialisation
-speedX=0
-speedY=0
+speedScrollX=0
+speedScrollY=0
+speedSpaceX=0
+speedSpaceY=0
 defSpeed=15
 clicked=False
 mousePos=[]
@@ -15,43 +17,60 @@ def mouseClicked(event):
     mousePos=[event.x, event.y]
     
 def keyReleased(event) :
-    global speedX, speedY
+    global speedSpaceX, speedSpaceY
     
     key = event.keysym
+    
+    # if key == "z":
+    #     speedSpaceY = 0
+    # if key == "s":
+    #     speedSpaceY = 0
+    # if key == "q":
+    #     speedSpaceX = 0
+    # if key == "d":
+    #     speedSpaceX = 0
 
-    if key == "Up":
-        speedY = 0
-    elif key == "Down":
-        speedY = 0
-    elif key == "Right":
-        speedX = 0
-    elif key == "Left":
-        speedX = 0
     
 def keyPressed(event) :
-    global megazoom, speedX, speedY, defSpeed
+    global megazoom, speedSpaceX, speedSpaceY, defSpeed
     
     key = event.keysym
 
     if key == "a" :
         megazoom /= 1.1
-    elif key == "q" :
+    elif key == "e" :
         megazoom *= 1.1
-
-    if key == "Up":
-        speedY = defSpeed
-    elif key == "Down":
-        speedY = -defSpeed
-    elif key == "Right":
-        speedX = -defSpeed
-    elif key == "Left":
-        speedX = defSpeed
-
-def getSpeedX() :
-    return speedX
     
-def getSpeedY() :
-    return speedY
+    #Déplacements du vaisseau
+    if key == "z" and speedSpaceY < defSpeed*3:
+        speedSpaceY -= defSpeed
+    if key == "s" and speedSpaceY < defSpeed*3:
+        speedSpaceY += defSpeed
+    if key == "q" and speedSpaceX < defSpeed*3:
+        speedSpaceX -= defSpeed
+    if key == "d" and speedSpaceX < defSpeed*3:
+        speedSpaceX += defSpeed
+
+
+def getSpeedScrollX() :
+    return speedScrollX
+
+def setSpeedScrollX(speedScrollX_):
+    global speedScrollX
+    speedScrollX = speedScrollX_
+    
+def getSpeedScrollY() :
+    return speedScrollY
+
+def setSpeedScrollY(speedScrollY_):
+    global speedScrollY
+    speedScrollY = speedScrollY_
+    
+def getSpeedSpaceX() :
+    return speedSpaceX
+    
+def getSpeedSpaceY() :
+    return speedSpaceY
 
 def getDefSpeed():
     return defSpeed
