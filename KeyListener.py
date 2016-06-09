@@ -32,7 +32,7 @@ def keyPressed(event) :
     global megazoom, speedX, speedY, defSpeed
     
     key = event.keysym
-    print(megazoom)
+
     if key == "a" :
         megazoom /= 1.1
     elif key == "q" :

@@ -40,7 +40,7 @@ objects.append(vaisseau)
 
 FPS=60
 sleepTime = 1/FPS
-increaseTime = 31536000 #1sec en vraie = increaseTime sec dans la simulation
+multipleTime = 31536000 #1sec en vraie = increaseTime sec dans la simulation
 elapsed = 0
 startloop = time.time()
 
@@ -48,12 +48,12 @@ while True:
     delta = time.time()-startloop #Le temps qu'il s'est écoulé depuis le dernier tour de boucle
     startloop = time.time()
     
-    increaseTime=frame.time.get()
+    multipleTime=frame.time.get()
     frame.univers.delete('all')
     #Parcourt tous les objets, les actualise et les affiche
     for i in range(len(objects)):
         obj = objects[i]
-        obj.move(delta*increaseTime) #1 sec -> 365 jours (31536000s)
+        obj.move(delta*multipleTime) #1 sec -> 365 jours (31536000s)
         frame.draw(obj)
         frame.setInfos(soleil.x, soleil.y, elapsed)
     
@@ -67,4 +67,4 @@ while True:
         
     frame.frame.update()
     time.sleep(sleepTime)
-    elapsed += delta*increaseTime
+    elapsed += delta*multipleTime
