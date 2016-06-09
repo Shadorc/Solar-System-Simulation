@@ -48,7 +48,7 @@ while True:
     delta = time.time()-startloop #Le temps qu'il s'est écoulé depuis le dernier tour de boucle
     startloop = time.time()
     
-    increaseTime=frame.time.get()
+    increaseTime=frame.time.get()*2.628e6
     frame.univers.delete('all')
     #Parcourt tous les objets, les actualise et les affiche
     for i in range(len(objects)):

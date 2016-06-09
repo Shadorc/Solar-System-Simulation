@@ -1,7 +1,7 @@
 #Nom, masse, diamètre, distance / soleil, température, période de révolution
 Soleil, 1.99e30, 1.39e6, 0, 5778, 0
 Mercure, 3.29e23, 4.88e3, 5.79e7, 433, 58.65
-Vénus, 4.87e24, 1.21e4, 1.08e8, 231.7, 243
+Venus, 4.87e24, 1.21e4, 1.08e8, 231.7, 243
 Terre, 5.97e24, 1.27e4, 1.49e8, 288, 365
 Lune, 7.35e22, 3.47e3, 3.84e5, 396, 27
 Mars, 6.42e23, 6.78e3, 2.27e28, 210.1, 687
