@@ -40,3 +40,11 @@ class Planet():
         # image = Image.open('images/' + self.name + '.gif')
         # image = image.resize((ceil(convertDist(self.diam)),ceil(convertDist(self.diam))), Image.ANTIALIAS)
         # self.photo = ImageTk.PhotoImage(image)
+        
+    def attract(self, xObj, yObj, massObj, theta):
+        G = 6.67e-11
+        signeX = sqrt((self.x-xObj)**2)/(self.x-xObj)
+        signeY = sqrt((self.y-yObj)**2)/(self.y-yObj)
+        attractX = signeX*G*massObj*self.mass*cos(theta)/(invconvertDist(xObj-self.x)*10**3)**2
+        attractY = signeY*G*massObj*self.mass*sin(theta)/(invconvertDist(yObj-self.y)*10**3)**2
+        return [attractX, attractY]

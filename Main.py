@@ -1,6 +1,7 @@
 from Planet import *
 from Spaceship import *
 from Frame import *
+from Maths import *
 import time
 
 frame = Frame()
@@ -24,8 +25,7 @@ saturne = Planet(soleil, "Saturne", 5.68e26, 1.16e5, 1.42e9, 168)
 uranus = Planet(soleil, "Uranus", 8.68e25, 5.07e4, 2.88e9, 353)
 neptune = Planet(soleil, "Neptune", 1.02e26, 4.92e4, 4.50e9, 324)
 
-vaisseau = Spaceship(soleil.x, soleil.y)
-
+vaisseau = Spaceship(300, 300)
 objects.append(soleil)
 objects.append(mercure)
 objects.append(venus)
@@ -45,7 +45,7 @@ sleepTime = 1/FPS
 increaseTime = 31536000 #1sec en vrai = increaseTime sec dans la simulation
 elapsed = 0
 startloop = time.time()
-
+        
 
 def upPos():
     if vaisseau.x < vaisseau.photo.width()/2-100:
@@ -60,7 +60,6 @@ def upPos():
         setSpeedScrollY(-vaisseau.speedY)
     else:
         setSpeedScrollY(0)
-    print(vaisseau.speedY,getSpeedScrollY())
         
         
 while True:
@@ -69,15 +68,20 @@ while True:
     
     increaseTime=frame.time.get()*2.628e6
     frame.univers.delete('all')
-    #Parcourt tous les objets, les actualise et les affiche
+    #Parcours tous les objets, les actualise et les affiche
     for i in range(len(objects)):
         obj = objects[i]
         obj.move(delta*increaseTime) #1 sec -> 365 jours (31536000s)
         frame.draw(obj)
         frame.setInfos(round(vaisseau.x), round(vaisseau.y), elapsed)
-        
+    
+    TRC = PFD(vaisseau, objects, soleil)  
+    print(TRC)  
+    vaisseau.accelX = convertDist(TRC[0]*10**-3)
+    vaisseau.accelY = convertDist(TRC[1]*10**-3)
+    
     upPos()
-            
+    
     
     #Si l'utilisateur a cliqué affiche les infos de la planète
     if getClicked():
