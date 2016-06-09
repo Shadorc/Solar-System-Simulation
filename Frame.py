@@ -38,16 +38,17 @@ class Frame():
         top = Toplevel()
         top.title("A propos de " + str(list[0]))
         top.geometry("300x120+200+200") #width x height + x + y
-        msg = Message(top, text="Masse : "+str(list[1])+"kg"
-        +"\nDiamètre : " + str(list[2]) + "km"
-        +"\nDistance par rapport au soleil : " + str(list[3]) + "km"
-        +"\nTempérature : " + str(list[4]) + "K"
-        +"\nPériode de révolution : " + str(list[5]) + "jours")
-        msg.pack()
+
+        infos = ("Masse : "+str(list[1])+" kg"
+        "\nDiamètre : " + str(list[2]) + " km"
+        "\nDistance par rapport au Soleil : " + str(list[3]) + " km"
+        "\nTempérature : " + str(list[4]) + " K"
+        "\nPériode de révolution : " + str(list[5]).replace('\n', '') + " jours")
+        label = Label(top, text=infos, height=0, width=150)
+        label.pack()
         
         button = Button(top, text="Fermer", command=top.destroy)
         button.pack()
-
 
     # def createMenu(self, list_menu):
     #     top = Toplevel()
