@@ -43,15 +43,16 @@ elapsed = 0 #Temps écoulé
 startloop = time.time()  
 
 def upPos():
-    if vaisseau.x < vaisseau.photo.width()/2-100:
+    if vaisseau.x < vaisseau.photo.width()/2:
         setSpeedScrollX(-vaisseau.speedX)
-    elif vaisseau.x > frame.frameW - vaisseau.photo.width()+100:
+    elif vaisseau.x > frame.frameW - vaisseau.photo.width():
         setSpeedScrollX(-vaisseau.speedX)
     else:
         setSpeedScrollX(0)
-    if vaisseau.y < vaisseau.photo.height()/2+100:
+
+    if vaisseau.y < vaisseau.photo.height()/2:
         setSpeedScrollY(-vaisseau.speedY)
-    elif vaisseau.y > frame.frameH + vaisseau.photo.height()-100:
+    elif vaisseau.y > frame.frameH + vaisseau.photo.height():
         setSpeedScrollY(-vaisseau.speedY)
     else:
         setSpeedScrollY(0)

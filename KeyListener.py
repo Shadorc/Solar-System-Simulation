@@ -29,15 +29,15 @@ def keyPressed(event) :
         zoom *= 1.1
     
     #Déplacements du vaisseau
-    if key == "z" and speedSpaceY < maxSpeed:
+    #FIXME: Si le vaisseau atteint sa vitesse max, il ne pourra jamais ralentir
+    if key == "z" and abs(speedSpaceY) < maxSpeed:
         speedSpaceY -= defSpeed
-    if key == "s" and speedSpaceY < maxSpeed:
+    if key == "s" and abs(speedSpaceY) < maxSpeed:
         speedSpaceY += defSpeed
-    if key == "q" and speedSpaceX < maxSpeed:
+    if key == "q" and abs(speedSpaceX) < maxSpeed:
         speedSpaceX -= defSpeed
-    if key == "d" and speedSpaceX < maxSpeed:
+    if key == "d" and abs(speedSpaceX) < maxSpeed:
         speedSpaceX += defSpeed
-
 
 def getSpeedScrollX() :
     return speedScrollX
