@@ -17,30 +17,22 @@ def mouseClicked(event):
     mousePos=[event.x, event.y]
     
 def keyReleased(event) :
-    global speedSpaceX, speedSpaceY, speedScrollX, speedScrollY
+    global speedSpaceX, speedSpaceY
     
     key = event.keysym
     
-    if key == "z":
-        speedSpaceY = 0
-    if key == "s":
-        speedSpaceY = 0
-    if key == "q":
-        speedSpaceX = 0
-    if key == "d":
-        speedSpaceX = 0
+    # if key == "z":
+    #     speedSpaceY = 0
+    # if key == "s":
+    #     speedSpaceY = 0
+    # if key == "q":
+    #     speedSpaceX = 0
+    # if key == "d":
+    #     speedSpaceX = 0
 
-    if key == "Up":
-        speedScrollY = 0
-    if key == "Down":
-        speedScrollY = 0
-    if key == "Right":
-        speedScrollX = 0
-    if key == "Left":
-        speedScrollX = 0
     
 def keyPressed(event) :
-    global megazoom, speedSpaceX, speedSpaceY, speedScrollX, speedScrollY, defSpeed
+    global megazoom, speedSpaceX, speedSpaceY, defSpeed
     
     key = event.keysym
 
@@ -48,30 +40,31 @@ def keyPressed(event) :
         megazoom /= 1.1
     elif key == "e" :
         megazoom *= 1.1
-        
-    if key == "z":
-        speedSpaceY=-defSpeed
-    if key == "s":
-        speedSpaceY = defSpeed
-    if key == "q":
-        speedSpaceX = -defSpeed
-    if key == "d":
-        speedSpaceX = defSpeed
-        
-    if key == "Up":
-        speedScrollY = defSpeed
-    if key == "Down":
-        speedScrollY = -defSpeed
-    if key == "Right":
-        speedScrollX = -defSpeed
-    if key == "Left":
-        speedScrollX = defSpeed
+    
+    #Déplacements du vaisseau
+    if key == "z" and speedSpaceY < defSpeed*3:
+        speedSpaceY -= defSpeed
+    if key == "s" and speedSpaceY < defSpeed*3:
+        speedSpaceY += defSpeed
+    if key == "q" and speedSpaceX < defSpeed*3:
+        speedSpaceX -= defSpeed
+    if key == "d" and speedSpaceX < defSpeed*3:
+        speedSpaceX += defSpeed
+
 
 def getSpeedScrollX() :
     return speedScrollX
+
+def setSpeedScrollX(speedScrollX_):
+    global speedScrollX
+    speedScrollX = speedScrollX_
     
 def getSpeedScrollY() :
     return speedScrollY
+
+def setSpeedScrollY(speedScrollY_):
+    global speedScrollY
+    speedScrollY = speedScrollY_
     
 def getSpeedSpaceX() :
     return speedSpaceX

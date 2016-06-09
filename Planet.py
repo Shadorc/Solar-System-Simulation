@@ -35,8 +35,8 @@ class Planet():
             self.x = -pixels*sin(self.theta) + self.parent.x
             self.y = pixels*cos(self.theta) + self.parent.y
         else : #Déplacement du Soleil
-            self.x = self.x + getSpeedScrollX()
-            self.y = self.y + getSpeedScrollY()
+            self.x = self.x + getSpeedScrollX()*delta*10**-5
+            self.y = self.y + getSpeedScrollY()*delta*10**-5
         # image = Image.open('images/' + self.name + '.gif')
         # image = image.resize((ceil(convertDist(self.diam)),ceil(convertDist(self.diam))), Image.ANTIALIAS)
         # self.photo = ImageTk.PhotoImage(image)

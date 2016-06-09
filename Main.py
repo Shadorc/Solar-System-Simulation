@@ -7,6 +7,8 @@ frame = Frame()
 
 objects = []
 
+
+
 ##Appel des fonctions pour le système solaire et le vaisseau
 soleil = Planet(None, "Soleil", 1.99e30, 1.39e6, 0, 0)
 soleil.x = frame.frame.winfo_screenwidth()/2
@@ -40,12 +42,29 @@ objects.append(vaisseau)
 
 FPS=60
 sleepTime = 1/FPS
-increaseTime = 31536000 #1sec en vraie = increaseTime sec dans la simulation
+increaseTime = 31536000 #1sec en vrai = increaseTime sec dans la simulation
 elapsed = 0
 startloop = time.time()
 
+
+def upPos():
+    if vaisseau.x < vaisseau.photo.width()/2-100:
+        setSpeedScrollX(-vaisseau.speedX)
+    elif vaisseau.x > frame.frameW - vaisseau.photo.width()+100:
+        setSpeedScrollX(-vaisseau.speedX)
+    else:
+        setSpeedScrollX(0)
+    if vaisseau.y < vaisseau.photo.height()/2+100:
+        setSpeedScrollY(-vaisseau.speedY)
+    elif vaisseau.y > frame.frameH + vaisseau.photo.height()-100:
+        setSpeedScrollY(-vaisseau.speedY)
+    else:
+        setSpeedScrollY(0)
+    print(vaisseau.speedY,getSpeedScrollY())
+        
+        
 while True:
-    delta = time.time()-startloop #Le temps qu'il s'eqdzaest écoulé depuis le dernier tour de boucle
+    delta = time.time()-startloop #Le temps qu'il s'est écoulé depuis le dernier tour de boucle
     startloop = time.time()
     
     increaseTime=frame.time.get()*2.628e6
@@ -55,7 +74,10 @@ while True:
         obj = objects[i]
         obj.move(delta*increaseTime) #1 sec -> 365 jours (31536000s)
         frame.draw(obj)
-        frame.setInfos(soleil.x, soleil.y, elapsed)
+        frame.setInfos(round(vaisseau.x), round(vaisseau.y), elapsed)
+        
+    upPos()
+            
     
     #Si l'utilisateur a cliqué affiche les infos de la planète
     if getClicked():
@@ -64,7 +86,7 @@ while True:
         if infoPlanet != None:
             frame.createPopup(infoPlanet)
         setClicked(False)
-        
+    
     frame.frame.update()
     time.sleep(sleepTime)
     elapsed += delta*increaseTime
