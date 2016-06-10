@@ -41,8 +41,7 @@ class Planet():
     """Renvoie la projection sur x et y de la force d'attraction exercée par la planète sur un autre objet"""
     def attract(self, xObj, yObj, massObj, theta):
         G = 6.67e-11
-        signX = sqrt((self.x-xObj)**2)/(self.x-xObj)
-        signY = sqrt((self.y-yObj)**2)/(self.y-yObj)
-        attractX = signX*G*massObj*self.mass*cos(theta)/(invConvertDist(xObj-self.x)*10**3)**2
-        attractY = signY*G*massObj*self.mass*sin(theta)/(invConvertDist(yObj-self.y)*10**3)**2
+        force = G*massObj*self.mass/(invConvertDist(getDistance(xObj, self.x, yObj, self.y))*10**3)**2
+        attractX = force*cos(theta)
+        attractY = -force*sin(theta)
         return [attractX, attractY]

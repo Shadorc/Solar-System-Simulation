@@ -50,17 +50,6 @@ class Frame():
         button = Button(top, text="Fermer", command=top.destroy)
         button.pack()
 
-    # def createMenu(self, list_menu):
-    #     top = Toplevel()
-    #     top.title("Menu "+ str(list_menu[0]))
-    # 
-    #     msg_menu = Message(top, text_menu=list_menu)
-    #     msg_menu.pack()
-    # 
-    #     button = Button(top, text="Fermer", command=top.destroy)
-    #     button.pack()
-
-
     def draw(self, obj):
         self.univers.create_image(obj.x, obj.y, image=obj.photo, anchor=CENTER)
 

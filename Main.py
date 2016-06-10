@@ -65,15 +65,15 @@ while True:
     increaseTime=frame.time.get()*2.628e6 #Convertie les mois en secondes
     frame.univers.delete('all')
     
-    #Parcours tous les objets, les actualise et les affiche
+    #Parcourt tous les objets, les actualise et les affiche
     for i in range(len(objects)):
         obj = objects[i]
         obj.move(delta*increaseTime)
         frame.draw(obj)
         frame.setInfos(round(vaisseau.x), round(vaisseau.y), elapsed)
-    
-    TRC = PFD(vaisseau, objects, soleil)
-    #On convertie le TRC qui est en mètre en km
+        
+    #On converti en km le TRC qui est en mètre
+    TRC = PFD(vaisseau, objects)
     vaisseau.accelX = convertDist(TRC[0]*10**-3)
     vaisseau.accelY = convertDist(TRC[1]*10**-3)
     
