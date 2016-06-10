@@ -1,6 +1,6 @@
+from KeyListener import *
 from tkinter import *
 from Maths import *
-from KeyListener import *
 from Point import *
 
 class Frame():
@@ -11,27 +11,29 @@ class Frame():
         
         self.frameW = self.frame.winfo_screenwidth()
         self.frameH = self.frame.winfo_screenheight()
-        
+
+        #Le panel principal
         panel = PanedWindow(self.frame, orient=HORIZONTAL)
         panel.pack(expand=1)
-        
+
+        #Le panel des options situé sur la gauche
         panelOptions = PanedWindow(panel, orient=VERTICAL, width=200)
         panelOptions.pack(expand=1, fill=BOTH)
 
-        #Label affichant les coordonnées
+        #Label affichant les divers informations
         self.textInfos = StringVar()
-        self.labelCoords = Label(panelOptions, textvariable=self.textInfos, background='White', anchor=CENTER)
+        self.labelCoords = Label(panelOptions, textvariable=self.textInfos, anchor=CENTER)
         panelOptions.add(self.labelCoords)
 
         #Curseur modifiant la vitesse d'écoulement du temps
-        self.time=DoubleVar()
+        self.time = DoubleVar()
         timeScale = Scale(panelOptions, from_=0, to=12, orient=HORIZONTAL, variable=self.time, sliderlength=20, label='mois/sec')
-        timeScale.set(0)
+        timeScale.set(1)
         timeScale.pack()
         panelOptions.add(timeScale)
         
-        #Curseur modifiant G
-        self.g=StringVar()
+        #Champs permettant de modifier G
+        self.g = StringVar()
         self.g.set(str(6.67e-11))
         gInput = Entry(panelOptions, textvariable=self.g, width=100)
         gInput.pack()
@@ -40,9 +42,10 @@ class Frame():
         gInputButton = Button(panelOptions, text="OK", command=self.valid)
         gInputButton.pack()
         panelOptions.add(gInputButton)
-        
+
+        #Bouton permettant d'activer ou de désactiver l'affichage des trajectoires
         self.showTrace = IntVar()
-        checkBu = Checkbutton(panelOptions, text="Afficher la trace", variable=self.showTrace)
+        checkBu = Checkbutton(panelOptions, text="Afficher les trajectoires", variable=self.showTrace)
         checkBu.pack()
         panelOptions.add(checkBu)
         
@@ -71,7 +74,7 @@ class Frame():
         "\nDistance par rapport au Soleil : " + str(list[3]) + " km"
         "\nTempérature : " + str(list[4]) + " K"
         "\nPériode de révolution : " + str(list[5]).replace('\n', '') + " jours")
-        label = Label(top, text=infos, height=0, width=150)
+        label = Label(top, text=infos, width=150)
         label.pack()
         
         button = Button(top, text="Fermer", command=top.destroy)

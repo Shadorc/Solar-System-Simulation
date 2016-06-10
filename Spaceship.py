@@ -15,8 +15,8 @@ class Spaceship():
         self.photo = PhotoImage(file="images/Spaceship_up.gif")
 
     def move(self, delta) :
-        self.speedX = getSpeedSpaceX() + self.accelX*delta
-        self.speedY = getSpeedSpaceY() + self.accelY*delta
+        self.speedX = self.accelX*delta + getSpeedSpaceX()
+        self.speedY = self.accelY*delta + getSpeedSpaceY()
         
         factor = 10**-5
         self.x = self.speedX*delta*factor + self.x

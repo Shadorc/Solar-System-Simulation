@@ -2,6 +2,7 @@ from File import *
 
 defSpeed=15
 maxSpeed=defSpeed*3
+
 speedScrollX=0
 speedScrollY=0
 speedSpaceX=0

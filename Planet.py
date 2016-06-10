@@ -12,26 +12,24 @@ class Planet():
         self.dist = dist
         self.speed = speed
         self.accel = 0
-        self.photo = PhotoImage(file='images/' + self.name + '.gif')
         self.theta = theta*pi/180
-        if(self.parent != None): #C'est pas le Soleil
-            self.x = self.parent.x + convertDist(self.dist)*cos(self.theta)
-            self.y = self.parent.y + convertDist(self.dist)*sin(self.theta)
+        self.photo = PhotoImage(file='images/' + self.name + '.gif')
+        if(self.parent != None): #Ce n'est pas le Soleil
+            self.x = convKmToPixel(self.dist)*cos(self.theta) + self.parent.x
+            self.y = convKmToPixel(self.dist)*sin(self.theta) + self.parent.y
             self.speedX = -cos(pi/2-getAngle(self, self.parent))*speed
             self.speedY = -sin(pi/2-getAngle(self, self.parent))*speed
 
     def move(self, delta):
         G = getG()
-        if self.parent != None: #La planète bouge, ce n'est pas le Soleil
+        #La planète bouge, ce n'est pas le Soleil
+        if self.parent != None:
             self.speedX = self.accelX*delta + self.speedX
             self.speedY = self.accelY*delta + self.speedY
-            self.x = convertDist(self.speedX*delta*1e-3) + self.x
-            self.y = convertDist(self.speedY*delta*1e-3) + self.y
-            # pixels=convertDist(self.dist)
-            # self.theta = sqrt(G*self.parent.mass/((self.dist*10**3)**3))*delta + self.theta
-            # self.x = -pixels*sin(self.theta) + self.parent.x
-            # self.y = pixels*cos(self.theta) + self.parent.y
-        else : #Déplacement du Soleil
+            self.x = convKmToPixel(self.speedX*delta*1e-3) + self.x
+            self.y = convKmToPixel(self.speedY*delta*1e-3) + self.y
+        #Déplacement du Soleil
+        else :
             factor = 10**-5
             self.x = self.x + getSpeedScrollX()*delta*factor
             self.y = self.y + getSpeedScrollY()*delta*factor
@@ -39,7 +37,9 @@ class Planet():
     """Renvoie la projection sur x et y de la force d'attraction exercée par la planète sur un autre objet"""
     def attract(self, xObj, yObj, massObj, theta):
         G = getG()
-        force = G*massObj*self.mass/(invConvertDist(getDistance(xObj, self.x, yObj, self.y))*10**3)**2
+        #Convertis la distance pixels<->km puis km<->m
+        d = convPixelToKm(getDistance(xObj, self.x, yObj, self.y))*10**3
+        force = (G*massObj*self.mass)/(d**2)
         attractX = force*cos(theta)
         attractY = -force*sin(theta)
         return [attractX, attractY]

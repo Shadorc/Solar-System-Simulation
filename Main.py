@@ -13,8 +13,8 @@ points = []
 soleil = Planet(None, "Soleil", 1.99e30, 1.39e6, 0, 0, 0)
 soleil.x = frame.frame.winfo_screenwidth()/2
 soleil.y = frame.frame.winfo_screenheight()/2
-soleil.speedX=0
-soleil.speedY=0
+soleil.speedX = 0
+soleil.speedY = 0
 
 mercure = Planet(soleil, "Mercure", 3.29e23, 4.88e3, 5.79e7, 47879.56, 308)
 venus = Planet(soleil, "Venus", 4.87e24, 1.21e4, 1.08e8, 35057.23, 168)
@@ -46,7 +46,6 @@ sleepTime = 1/FPS
 elapsed = 0 #Temps écoulé
 startloop = time.time()  
 
-
 def upPos():
     if vaisseau.x < vaisseau.photo.width()/2:
         setSpeedScrollX(-vaisseau.speedX)
@@ -67,7 +66,7 @@ while True:
     delta = time.time()-startloop
     startloop = time.time()
 
-    increaseTime=frame.time.get()*2.628e6 #Convertit les mois en secondes
+    multipleTime=frame.time.get()*2.628e6 #Convertit les mois en secondes
     
     frame.univers.delete('all')
     
@@ -84,7 +83,7 @@ while True:
         #     #obj.photo = PhotoImage(file='images/explosion.gif')
         #     print()
         # else:
-        obj.move(delta*increaseTime)
+        obj.move(delta*multipleTime)
         points.append(Point(obj.x, obj.y))
         frame.draw(obj)
         frame.setInfos(round(vaisseau.x), round(vaisseau.y), elapsed)
@@ -93,6 +92,7 @@ while True:
     i=0
     while i < len(points):
         pt = points[i]
+        #On a activé l'affichage des trajectoires
         if frame.showTrace.get() == 1:
             frame.drawPoint(pt)
         pt.count += 1
@@ -112,4 +112,4 @@ while True:
     
     frame.frame.update()
     time.sleep(sleepTime)
-    elapsed += delta*increaseTime
+    elapsed += delta*multipleTime

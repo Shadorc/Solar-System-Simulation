@@ -3,23 +3,22 @@ from KeyListener import *
 
 G = 6.67e-11
 
-def setG(G_):
+def setG(newG):
     global G
-    G=G_
+    G = newG
 
 def getG():
     return G
 
 """Convertit les kms en pixels"""
-def convertDist(km):
+def convKmToPixel(km):
     #100 pixels = distance Terre/Soleil
     return (100*getZoom()*km)/1.49e8
 
 """Convertit les pixels en kms"""
-def invConvertDist(pixels) :
+def convPixelToKm(pixels) :
     return pixels*1.49e8/(100*getZoom())
-    
-"""Loi des cosinus, c étant le côté opposé à l'angle"""
+
 def getAngle(element, planet):
     angle = atan((element.y-planet.y)/(planet.x-element.x))
     #Si la planète est derrière le vaisseau, on ajoute pi car arctan appartient à -pi/2; pi/2
@@ -36,7 +35,7 @@ def getPlanetClicked(objects, mousePos):
     return None
 
 """Renvoie la distance entre deux points"""
-def getDistance(x1,x2,y1,y2) :
+def getDistance(x1, x2, y1, y2) :
     return sqrt((x1-x2)**2+(y1-y2)**2)
     
 def PFD(element, objects):
