@@ -1,6 +1,15 @@
 from math import *
 from KeyListener import *
 
+G = 6.67e-11
+
+def setG(G_):
+    global G
+    G=G_
+
+def getG():
+    return G
+
 """Convertit les kms en pixels"""
 def convertDist(km):
     #100 pixels = distance Terre/Soleil
@@ -44,3 +53,14 @@ def PFD(element, objects):
         forceX += force[0]/element.mass
         forceY += force[1]/element.mass
     return [forceX, forceY]
+    
+#Renvoie True si obj est entré en collision avec un élément de objects
+def checkHitbox(element, objects):
+    for i in range(len(objects)):
+        obj = objects[i]
+        #On ne veut pas vérifier la collision entre l'objet et lui-même
+        if obj == element:
+            continue
+        if getDistance(obj.x, element.x, obj.y, element.y) < obj.photo.width()/2:
+            return True
+    return False

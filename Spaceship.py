@@ -6,6 +6,7 @@ class Spaceship():
     def __init__(self, x, y):
         self.x = x
         self.y = y
+        self.name = 'Spacesheep'
         self.speedX = 0
         self.speedY = 0
         self.accelX = 0
@@ -21,7 +22,7 @@ class Spaceship():
         self.x = self.speedX*delta*factor + self.x
         self.y = self.speedY*delta*factor + self.y 
 
-        #Permet de gérer l'affichage du vaisseau selon sons sens de déplacement
+        #Permet de gérer l'affichage du vaisseau selon son sens de déplacement
         if getSpeedSpaceX() == getDefSpeed() :
             self.photo = PhotoImage(file="images/Spaceship_right.gif")
         elif getSpeedSpaceX() == -getDefSpeed() :

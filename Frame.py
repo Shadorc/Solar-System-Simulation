@@ -1,6 +1,7 @@
 from tkinter import *
 from Maths import *
 from KeyListener import *
+from Point import *
 
 class Frame():
     
@@ -10,20 +11,42 @@ class Frame():
         
         self.frameW = self.frame.winfo_screenwidth()
         self.frameH = self.frame.winfo_screenheight()
+        
+        panel = PanedWindow(self.frame, orient=HORIZONTAL)
+        panel.pack(expand=1)
+        
+        panelOptions = PanedWindow(panel, orient=VERTICAL, width=200)
+        panelOptions.pack(expand=1, fill=BOTH)
+
+        #Label affichant les coordonnées
+        self.textInfos = StringVar()
+        self.labelCoords = Label(panelOptions, textvariable=self.textInfos, background='White', anchor=CENTER)
+        panelOptions.add(self.labelCoords)
 
         #Curseur modifiant la vitesse d'écoulement du temps
         self.time=DoubleVar()
-        timeScale = Scale(self.frame, from_=-12, to=12, orient=HORIZONTAL, variable=self.time, length=200, sliderlength=20, label='mois/sec')
+        timeScale = Scale(panelOptions, from_=0, to=12, orient=HORIZONTAL, variable=self.time, sliderlength=20, label='mois/sec')
         timeScale.set(1)
         timeScale.pack()
+        panelOptions.add(timeScale)
         
-        panel = PanedWindow(self.frame, orient=VERTICAL)
-        panel.pack(expand=1, fill=BOTH)
-
-        #Label affichant les coordonnées
-        self.textCoords = StringVar()
-        self.labelCoords = Label(panel, textvariable=self.textCoords, background='White', anchor=CENTER)
-        panel.add(self.labelCoords)
+        #Curseur modifiant G
+        self.g=StringVar()
+        self.g.set(str(6.67e-11))
+        gInput = Entry(panelOptions, textvariable=self.g, width=100)
+        gInput.pack()
+        panelOptions.add(gInput)
+        
+        gInputButton = Button(panelOptions, text="OK", command=self.valid)
+        gInputButton.pack()
+        panelOptions.add(gInputButton)
+        
+        self.showTrace = IntVar()
+        checkBu = Checkbutton(panelOptions, text="Afficher la trace", variable=self.showTrace)
+        checkBu.pack()
+        panelOptions.add(checkBu)
+        
+        panel.add(panelOptions)
 
         #Canvas représentant l'Univers
         self.univers = Canvas(panel, width=self.frameW, height=self.frameH)
@@ -33,6 +56,10 @@ class Frame():
         self.univers.pack()
         self.univers.focus_set()
         panel.add(self.univers)
+        
+    def valid(self):
+        setG(float(self.g.get()))
+        self.univers.focus_set()
 
     def createPopup(self, list):
         top = Toplevel()
@@ -52,8 +79,11 @@ class Frame():
 
     def draw(self, obj):
         self.univers.create_image(obj.x, obj.y, image=obj.photo, anchor=CENTER)
+        
+    def drawPoint(self, pt):
+        self.univers.create_oval(pt.x-1, pt.y-1, pt.x+1, pt.y+1, fill='white')
 
     #Modifie les infos dans l'en-tête
     def setInfos(self, x, y, elapsed):
-        self.textCoords.set('Coordonnées du vaisseau X:' + str(self.frameW/2-x) + " Y:" + str(y-self.frameH/2)
-                            + "\nTemps: " + str(round(elapsed/31536000)) + "ans")
+        self.textInfos.set('Coordonnées du vaisseau\nX:' + str(self.frameW/2-x) + " Y:" + str(y-self.frameH/2)
+                            + "\n\nTemps: " + str(round(elapsed/31536000)) + "ans")

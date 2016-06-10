@@ -24,7 +24,7 @@ class Planet():
             # self.photo = ImageTk.PhotoImage(image)
 
     def move(self, delta):
-        G = 6.67e-11
+        G = getG()
         if self.parent != None: #La planète bouge, ce n'est pas le Soleil
             pixels=convertDist(self.dist)
             self.theta = sqrt(G*self.parent.mass/((self.dist*10**3)**3))*delta + self.theta
@@ -40,7 +40,7 @@ class Planet():
 
     """Renvoie la projection sur x et y de la force d'attraction exercée par la planète sur un autre objet"""
     def attract(self, xObj, yObj, massObj, theta):
-        G = 6.67e-11
+        G = getG()
         force = G*massObj*self.mass/(invConvertDist(getDistance(xObj, self.x, yObj, self.y))*10**3)**2
         attractX = force*cos(theta)
         attractY = -force*sin(theta)

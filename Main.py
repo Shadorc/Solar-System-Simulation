@@ -2,11 +2,13 @@ from Planet import *
 from Spaceship import *
 from Frame import *
 from Maths import *
+from Point import *
 import time
 
 frame = Frame()
 
 objects = []
+points = []
 
 soleil = Planet(None, "Soleil", 1.99e30, 1.39e6, 0, 0)
 soleil.x = frame.frame.winfo_screenwidth()/2
@@ -37,7 +39,7 @@ objects.append(neptune)
 objects.append(vaisseau)
 
 ##Boucle principale
-FPS=60
+FPS=1000
 sleepTime = 1/FPS
 elapsed = 0 #Temps écoulé
 startloop = time.time()  
@@ -61,18 +63,33 @@ while True:
     #Le temps qu'il s'est écoulé depuis le dernier tour de boucle
     delta = time.time()-startloop
     startloop = time.time()
+
+    increaseTime=frame.time.get()*2.628e6 #Convertit les mois en secondes
     
-    increaseTime=frame.time.get()*2.628e6 #Convertie les mois en secondes
     frame.univers.delete('all')
     
     #Parcourt tous les objets, les actualise et les affiche
     for i in range(len(objects)):
         obj = objects[i]
         obj.move(delta*increaseTime)
+        if checkHitbox(obj, objects):
+            obj.photo = PhotoImage(file='images/explosion.gif')
+        points.append(Point(obj.x, obj.y))
         frame.draw(obj)
         frame.setInfos(round(vaisseau.x), round(vaisseau.y), elapsed)
         
-    #On converti en km le TRC qui est en mètre
+    #Trajectoire des objets
+    i=0
+    while i < len(points):
+        pt = points[i]
+        if frame.showTrace.get() == 1:
+            frame.drawPoint(pt)
+        pt.count += 1
+        if pt.count >= 50:
+            points.remove(pt)
+        i+=1
+        
+    #On convertit en km le TRC qui est en mètre
     TRC = PFD(vaisseau, objects)
     vaisseau.accelX = convertDist(TRC[0]*10**-3)
     vaisseau.accelY = convertDist(TRC[1]*10**-3)
