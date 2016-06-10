@@ -49,19 +49,19 @@ startloop = time.time()
 def upPos():
     #Bord gauche
     if vaisseau.x < vaisseau.photo.width()/2:
-        setSpeedScrollX(-vaisseau.speedX)
+        setSpeedScrollX(-getSpeedSpaceX())
     #Bord droit
-    elif vaisseau.x > frame.frameW - vaisseau.photo.width():
-        setSpeedScrollX(-vaisseau.speedX)
+    elif vaisseau.x > frame.univers.winfo_width() - vaisseau.photo.width():
+        setSpeedScrollX(-getSpeedSpaceX())
     else:
         setSpeedScrollX(0)
 
     #Bord haut
     if vaisseau.y < vaisseau.photo.height()/2:
-        setSpeedScrollY(-vaisseau.speedY)
+        setSpeedScrollY(-getSpeedSpaceY())
     #Bord bas
-    elif vaisseau.y > frame.frameH + vaisseau.photo.height():
-        setSpeedScrollY(-vaisseau.speedY)
+    elif vaisseau.y > frame.univers.winfo_height() + vaisseau.photo.height():
+        setSpeedScrollY(-getSpeedSpaceY())
     else:
         setSpeedScrollY(0)
              
