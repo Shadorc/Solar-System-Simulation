@@ -22,17 +22,10 @@ class Planet():
 
     def move(self, delta):
         G = getG()
-        #La planète bouge, ce n'est pas le Soleil
-        if self.parent != None:
-            self.speedX = self.accelX*delta + self.speedX
-            self.speedY = self.accelY*delta + self.speedY
-            self.x = convKmToPixel(self.speedX*delta*1e-3) + self.x
-            self.y = convKmToPixel(self.speedY*delta*1e-3) + self.y
-        #Déplacement du Soleil
-        else :
-            factor = 10**-5
-            self.x = self.x + getSpeedScrollX()*delta*factor
-            self.y = self.y + getSpeedScrollY()*delta*factor
+        self.speedX = self.accelX*delta + self.speedX + getSpeedScrollX()
+        self.speedY = self.accelY*delta + self.speedY + getSpeedScrollY()
+        self.x = convKmToPixel(self.speedX*delta*1e-3) + self.x
+        self.y = convKmToPixel(self.speedY*delta*1e-3) + self.y
 
     """Renvoie la projection sur x et y de la force d'attraction exercée par la planète sur un autre objet"""
     def attract(self, xObj, yObj, massObj, theta):

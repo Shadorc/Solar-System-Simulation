@@ -26,7 +26,7 @@ saturne = Planet(soleil, "Saturne", 5.68e26, 1.16e5, 1.42e9, 30573.51, 168)
 uranus = Planet(soleil, "Uranus", 8.68e25, 5.07e4, 2.88e9, 6788.80, 353)
 neptune = Planet(soleil, "Neptune", 1.02e26, 4.92e4, 4.50e9, 5431.04, 324)
 
-vaisseau = Spaceship(terre.x+terre.photo.width(), terre.y)
+vaisseau = Spaceship(300, 300)
 
 objects.append(soleil)
 objects.append(mercure)
@@ -38,7 +38,7 @@ objects.append(jupiter)
 objects.append(saturne)
 objects.append(uranus)
 objects.append(neptune)
-#objects.append(vaisseau)
+objects.append(vaisseau)
 
 ##Boucle principale
 FPS=1000
@@ -76,12 +76,11 @@ while True:
         
         #On convertit en km le TRC qui est en mètre
         TRC = PFD(obj, objects)
-        obj.accelX = TRC[0] #m/s²
+        obj.accelX = TRC[0]
         obj.accelY = TRC[1]
         
         # if checkHitbox(obj, objects):
-        #     #obj.photo = PhotoImage(file='images/explosion.gif')
-        #     print()
+        #     obj.photo = PhotoImage(file='images/explosion.gif')
         # else:
         obj.move(delta*multipleTime)
         points.append(Point(obj.x, obj.y))
