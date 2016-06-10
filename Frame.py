@@ -73,7 +73,7 @@ class Frame():
 
         infos = ("Masse : "+str(list[1])+" kg"
         "\nDiamètre : " + str(list[2]) + " km"
-        "\nDistance par rapport au Soleil : " + str(list[3]) + " km"
+        "\nDistance par rapport au Soleil : " + str(list[3]*1e-3) + " km"
         "\nTempérature : " + str(list[4]) + " K"
         "\nPériode de révolution : " + str(list[5]).replace('\n', '') + " jours")
         label = Label(top, text=infos, width=150)

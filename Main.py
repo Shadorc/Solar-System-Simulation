@@ -16,15 +16,16 @@ soleil.y = frame.frame.winfo_screenheight()/2
 soleil.speedX = 0
 soleil.speedY = 0
 
-mercure = Planet(soleil, "Mercure", 3.29e23, 4.88e3, 5.79e7, 47879.56, 308)
-venus = Planet(soleil, "Venus", 4.87e24, 1.21e4, 1.08e8, 35057.23, 168)
-terre = Planet(soleil, "Terre", 5.97e24, 1.27e4, 1.49e8, 29846.70, 175)
-lune = Planet(terre, "Lune", 7.35e22, 3.47e3, 3.84e5, 1018.32, 113.8)
-mars = Planet(soleil, "Mars", 6.42e23, 6.78e3, 2.27e8, 24181.13, 313)
-jupiter = Planet(soleil, "Jupiter", 1.90e27, 1.40e5, 7.79e8, 13053.31, 309) 
-saturne = Planet(soleil, "Saturne", 5.68e26, 1.16e5, 1.42e9, 30573.51, 168)
-uranus = Planet(soleil, "Uranus", 8.68e25, 5.07e4, 2.88e9, 6788.80, 353)
-neptune = Planet(soleil, "Neptune", 1.02e26, 4.92e4, 4.50e9, 5431.04, 324)
+#parent, name, mass, diam, dist, speed, theta
+mercure = Planet(soleil, "Mercure", 3.29e23, 4.88e3, 5.79e10, 47879.56, 308)
+venus = Planet(soleil, "Venus", 4.87e24, 1.21e4, 1.08e11, 35057.23, 168)
+terre = Planet(soleil, "Terre", 5.97e24, 1.27e4, 1.49e11, 29846.70, 175)
+lune = Planet(terre, "Lune", 7.35e22, 3.47e3, 3.84e8, 1018.32, 113.8)
+mars = Planet(soleil, "Mars", 6.42e23, 6.78e3, 2.27e11, 24181.13, 313)
+jupiter = Planet(soleil, "Jupiter", 1.90e27, 1.40e5, 7.79e11, 13053.31, 309) 
+saturne = Planet(soleil, "Saturne", 5.68e26, 1.16e5, 1.42e12, 30573.51, 168)
+uranus = Planet(soleil, "Uranus", 8.68e25, 5.07e4, 2.88e12, 6788.80, 353)
+neptune = Planet(soleil, "Neptune", 1.02e26, 4.92e4, 4.50e12, 5431.04, 324)
 
 vaisseau = Spaceship(300, 300)
 
@@ -70,7 +71,7 @@ while True:
     delta = time.time()-startloop
     startloop = time.time()
 
-    multipleTime=frame.time.get()*2.628e6 #Convertit les mois en secondes
+    multipleTime = frame.time.get()*2.628e6 #Convertit les mois en secondes
     
     frame.univers.delete('all')
     
@@ -78,7 +79,7 @@ while True:
     for i in range(len(objects)):
         obj = objects[i]
         
-        #On convertit en km le TRC qui est en mètre
+        #On calcule toutes les forces appliquées sur un objet et on modifie son accélération en conséquence
         TRC = PFD(obj, objects)
         obj.accelX = TRC[0]
         obj.accelY = TRC[1]

@@ -10,14 +10,14 @@ def setG(newG):
 def getG():
     return G
 
-"""Convertit les kms en pixels"""
-def convKmToPixel(km):
-    #100 pixels = distance Terre/Soleil
-    return (100*getZoom()*km)/1.49e8
+"""Convertit des mètres en pixels"""
+def convMeterToPixel(m):
+    #100 pixels = distance Terre/Soleil en mètres
+    return 100*m/1.49e11
 
-"""Convertit les pixels en kms"""
-def convPixelToKm(pixels) :
-    return pixels*1.49e8/(100*getZoom())
+"""Convertit des pixels en mètres"""
+def convPixelToMeter(pixels) :
+    return pixels*1.49e11/100
 
 def getAngle(element, planet):
     angle = atan((element.y-planet.y)/(planet.x-element.x))
