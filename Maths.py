@@ -61,6 +61,6 @@ def checkHitbox(element, objects):
         #On ne veut pas vérifier la collision entre l'objet et lui-même
         if obj == element:
             continue
-        if getDistance(obj.x, element.x, obj.y, element.y) < obj.photo.width()/2:
+        if getDistance(obj.x, element.x, obj.y, element.y) < obj.photo.width()/2 + element.photo.width()/2:
             return True
     return False

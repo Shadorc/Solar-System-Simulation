@@ -26,7 +26,7 @@ class Frame():
         #Curseur modifiant la vitesse d'écoulement du temps
         self.time=DoubleVar()
         timeScale = Scale(panelOptions, from_=0, to=12, orient=HORIZONTAL, variable=self.time, sliderlength=20, label='mois/sec')
-        timeScale.set(1)
+        timeScale.set(0)
         timeScale.pack()
         panelOptions.add(timeScale)
         
