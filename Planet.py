@@ -25,13 +25,13 @@ class Planet():
         G = getG()
         self.speedX = self.accelX*delta + self.speedX
         self.speedY = self.accelY*delta + self.speedY
-        self.x = convMeterToPixel(self.speedX*delta) + self.x + getSpeedScrollX()*delta
-        self.y = convMeterToPixel(self.speedY*delta) + self.y + getSpeedScrollY()*delta
+        self.x = convMeterToPixel(self.speedX*delta + getSpeedScrollX()*delta) + self.x
+        self.y = convMeterToPixel(self.speedY*delta + getSpeedScrollY()*delta) + self.y
 
     """Renvoie la projection sur x et y de la force d'attraction exercée par la planète sur un autre objet"""
     def attract(self, xObj, yObj, massObj, theta):
         G = getG()
-        #Convertis la distance pixels<->m
+        #Convertit la distance pixels<->m
         d = convPixelToMeter(getDistance(xObj, self.x, yObj, self.y))
         force = (G*massObj*self.mass)/(d**2)
         force = force/massObj

@@ -27,7 +27,7 @@ saturne = Planet(soleil, "Saturne", 5.68e26, 1.16e5, 1.42e12, 30573.51, 168)
 uranus = Planet(soleil, "Uranus", 8.68e25, 5.07e4, 2.88e12, 6788.80, 353)
 neptune = Planet(soleil, "Neptune", 1.02e26, 4.92e4, 4.50e12, 5431.04, 324)
 
-vaisseau = Spaceship(100, 100)
+vaisseau = Spaceship(200, 200)
 
 objects.append(soleil)
 objects.append(mercure)
