@@ -17,8 +17,8 @@ class Planet():
         if(self.parent != None): #Ce n'est pas le Soleil
             self.x = convMeterToPixel(self.dist)*cos(self.theta) + self.parent.x
             self.y = convMeterToPixel(self.dist)*sin(self.theta) + self.parent.y
-            self.speedX = -cos(pi/2-getAngle(self, self.parent))*speed
-            self.speedY = -sin(pi/2-getAngle(self, self.parent))*speed
+            self.speedX = -cos(pi/2-getAngle(self, self.parent))*speed + self.parent.speedX
+            self.speedY = -sin(pi/2-getAngle(self, self.parent))*speed + self.parent.speedY
 
     def move(self, delta):
         G = getG()
