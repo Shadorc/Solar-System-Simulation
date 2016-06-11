@@ -9,8 +9,6 @@ class Spaceship():
         self.name = 'Spacesheep'
         self.speedX = 0
         self.speedY = 0
-        self.accelX = 0
-        self.accelY = 0
         self.mass = 1000
         self.photo = PhotoImage(file="images/Spaceship_up.gif")
 
@@ -18,9 +16,8 @@ class Spaceship():
         self.speedX = self.accelX*delta + getSpeedSpaceX() + getSpeedScrollX()
         self.speedY = self.accelY*delta + getSpeedSpaceY() + getSpeedScrollY()
         
-        factor = 10**-5
-        self.x = self.speedX*delta*factor + self.x
-        self.y = self.speedY*delta*factor + self.y 
+        self.x = convMeterToPixel(self.speedX*delta) + self.x
+        self.y = convMeterToPixel(self.speedY*delta) + self.y 
 
         #Permet de gérer l'affichage du vaisseau selon son sens de déplacement
         if getSpeedSpaceX() == getDefSpeed() :

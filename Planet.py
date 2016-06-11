@@ -1,6 +1,7 @@
 from math import *
 from Maths import *
 from tkinter import *
+from KeyListener import *
 
 class Planet():
 
@@ -17,23 +18,23 @@ class Planet():
         if(self.parent != None): #Ce n'est pas le Soleil
             self.x = convMeterToPixel(self.dist)*cos(self.theta) + self.parent.x
             self.y = convMeterToPixel(self.dist)*sin(self.theta) + self.parent.y
-            self.speedX = -cos(pi/2-getAngle(self, self.parent))*speed + self.parent.speedX
-            self.speedY = -sin(pi/2-getAngle(self, self.parent))*speed + self.parent.speedY
+            self.speedX = -cos(pi/2-getAngle(self, self.parent))*self.speed + self.parent.speedX
+            self.speedY = -sin(pi/2-getAngle(self, self.parent))*self.speed + self.parent.speedY
 
     def move(self, delta):
         G = getG()
         self.speedX = self.accelX*delta + self.speedX
         self.speedY = self.accelY*delta + self.speedY
-        factor = 10**-5
-        self.x = convMeterToPixel(self.speedX*delta) + self.x + getSpeedScrollX()*delta*factor
-        self.y = convMeterToPixel(self.speedY*delta) + self.y + getSpeedScrollY()*delta*factor
+        self.x = convMeterToPixel(self.speedX*delta) + self.x + getSpeedScrollX()*delta
+        self.y = convMeterToPixel(self.speedY*delta) + self.y + getSpeedScrollY()*delta
 
     """Renvoie la projection sur x et y de la force d'attraction exercée par la planète sur un autre objet"""
     def attract(self, xObj, yObj, massObj, theta):
         G = getG()
-        #Convertis la distance pixels<->km puis km<->m
+        #Convertis la distance pixels<->m
         d = convPixelToMeter(getDistance(xObj, self.x, yObj, self.y))
         force = (G*massObj*self.mass)/(d**2)
+        force = force/massObj
         attractX = force*cos(theta)
         attractY = -force*sin(theta)
         return [attractX, attractY]

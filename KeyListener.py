@@ -1,6 +1,7 @@
 from File import *
+from Maths import *
 
-defSpeed=15
+defSpeed=convMeterToPixel(1e5)
 maxSpeed=defSpeed*3
 
 speedScrollX=0

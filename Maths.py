@@ -1,5 +1,4 @@
 from math import *
-from KeyListener import *
 
 G = 6.67e-11
 
@@ -49,8 +48,8 @@ def PFD(element, objects):
         theta = getAngle(element, obj)
         #Norme de la force exercée par la planète sur l'élément
         force = obj.attract(element.x, element.y, element.mass, theta)
-        forceX += force[0]/element.mass
-        forceY += force[1]/element.mass
+        forceX += force[0]
+        forceY += force[1]
     return [forceX, forceY]
     
 #Renvoie True si obj est entré en collision avec un élément de objects
