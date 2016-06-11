@@ -20,13 +20,13 @@ class Spaceship():
         self.y = convMeterToPixel(self.speedY*delta) + self.y 
 
         #Permet de gérer l'affichage du vaisseau selon son sens de déplacement
-        if getSpeedSpaceX() == getDefSpeed() :
+        if getSpeedSpaceX() > 0:
             self.photo = PhotoImage(file="images/Spaceship_right.gif")
-        elif getSpeedSpaceX() == -getDefSpeed() :
+        elif getSpeedSpaceX() < 0:
             self.photo = PhotoImage(file="images/Spaceship_left.gif")
-        elif getSpeedSpaceY() == getDefSpeed() :
+        if getSpeedSpaceY() > 0:
             self.photo = PhotoImage(file="images/Spaceship_down.gif")
-        elif getSpeedSpaceY() == -getDefSpeed() :
+        elif getSpeedSpaceY() < 0:
             self.photo = PhotoImage(file="images/Spaceship_up.gif")
 
     def attract(self, xObj, yObj, massObj, theta):
