@@ -1,17 +1,16 @@
 from File import *
 from Maths import *
 
-defSpeed=convMeterToPixel(21000*1e10)
-maxSpeed=defSpeed*3
+defSpeed = convMeterToPixel(21000*1e10)
+maxSpeed = defSpeed*3
 
-speedScrollX=0
-speedScrollY=0
-speedSpaceX=0
-speedSpaceY=0
+speedScrollX = 0
+speedScrollY = 0
+speedSpaceX = 0
+speedSpaceY = 0
 
-clicked=False
-mousePos=[]
-zoom=1
+clicked = False
+mousePos = []
 
 """'Clics' de souris"""
 def mouseClicked(event):
@@ -20,16 +19,9 @@ def mouseClicked(event):
     mousePos=[event.x, event.y]
     
 def keyPressed(event) :
-    global zoom, speedSpaceX, speedSpaceY, defSpeed
+    global speedSpaceX, speedSpaceY, defSpeed
     
     key = event.keysym
-
-    #Dezoom
-    if key == "a" :
-        zoom /= 1.1
-    #Zoom
-    elif key == "e" :
-        zoom *= 1.1
     
     #Déplacements du vaisseau
     #Haut
@@ -77,6 +69,3 @@ def setClicked(clicked_):
 
 def getMousePos():
     return mousePos
-
-def getZoom() :
-    return zoom

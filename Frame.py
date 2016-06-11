@@ -7,7 +7,7 @@ class Frame():
     
     def __init__(self):
         self.frame = Tk()
-        self.frame.title("Simulateur Système Solaire V0.3")
+        self.frame.title("Simulateur Système Solaire V2.0")
         #Affiche la fenêtre en plein écran
         self.frame.state('zoomed')
         

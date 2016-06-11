@@ -42,7 +42,7 @@ objects.append(neptune)
 objects.append(vaisseau)
 
 ##Boucle principale
-FPS=1000
+FPS = 1000
 sleepTime = 1/FPS
 elapsed = 0
 startloop = time.time()  
@@ -84,10 +84,7 @@ while True:
         TRC = PFD(obj, objects)
         obj.accelX = TRC[0]
         obj.accelY = TRC[1]
-        
-        # if checkHitbox(obj, objects):
-        #     obj.photo = PhotoImage(file='images/explosion.gif')
-        # else:
+
         obj.move(delta*multipleTime)
         points.append(Point(obj.x, obj.y))
         frame.draw(obj)
