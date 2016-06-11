@@ -44,24 +44,25 @@ objects.append(vaisseau)
 ##Boucle principale
 FPS=1000
 sleepTime = 1/FPS
-elapsed = 0 #Temps écoulé
+elapsed = 0
 startloop = time.time()  
 
 def upPos():
+    offset = 100
     #Bord gauche
-    if vaisseau.x < vaisseau.photo.width()/2:
+    if vaisseau.x < vaisseau.photo.width()/2 + offset:
         setSpeedScrollX(-getSpeedSpaceX())
     #Bord droit
-    elif vaisseau.x > frame.univers.winfo_width() - vaisseau.photo.width():
+    elif vaisseau.x > frame.univers.winfo_width() - vaisseau.photo.width() - offset:
         setSpeedScrollX(-getSpeedSpaceX())
     else:
         setSpeedScrollX(0)
 
     #Bord haut
-    if vaisseau.y < vaisseau.photo.height()/2:
+    if vaisseau.y < vaisseau.photo.height()/2 + offset:
         setSpeedScrollY(-getSpeedSpaceY())
     #Bord bas
-    elif vaisseau.y > frame.univers.winfo_height() + vaisseau.photo.height():
+    elif vaisseau.y > frame.univers.winfo_height() - vaisseau.photo.height() - offset:
         setSpeedScrollY(-getSpeedSpaceY())
     else:
         setSpeedScrollY(0)
