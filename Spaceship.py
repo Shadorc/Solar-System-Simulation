@@ -30,5 +30,5 @@ class Spaceship():
             self.photo = PhotoImage(file="images/Spaceship_up.gif")
 
     def attract(self, xObj, yObj, massObj, theta):
-        #Le vaisseau n'attire personne
+        #On néglige l'attraction du vaisseau
         return [0,0]

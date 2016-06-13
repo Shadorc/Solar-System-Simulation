@@ -13,9 +13,9 @@ class Planet():
         self.dist = dist
         self.speed = speed
         self.accel = 0
-        self.theta = theta*pi/180
+        self.theta = theta*pi/180 #On convertit les degrés en radians
         self.photo = PhotoImage(file='images/' + self.name + '.gif')
-        if(self.parent != None): #Ce n'est pas le Soleil
+        if self.parent != None: #Ce n'est pas le Soleil
             self.x = convMeterToPixel(self.dist)*cos(self.theta) + self.parent.x
             self.y = convMeterToPixel(self.dist)*sin(self.theta) + self.parent.y
             self.speedX = -cos(pi/2-getAngle(self, self.parent))*self.speed + self.parent.speedX
@@ -28,13 +28,12 @@ class Planet():
         self.x = convMeterToPixel(self.speedX*delta + getSpeedScrollX()*delta) + self.x
         self.y = convMeterToPixel(self.speedY*delta + getSpeedScrollY()*delta) + self.y
 
-    """Renvoie la projection sur x et y de la force d'attraction exercée par la planète sur un autre objet"""
     def attract(self, xObj, yObj, massObj, theta):
+        """Renvoie la projection sur x et y de la force d'attraction exercée par la planète sur un autre objet sous forme de liste"""
         G = getG()
-        #Convertit la distance pixels<->m
         d = convPixelToMeter(getDistance(xObj, self.x, yObj, self.y))
         force = (G*massObj*self.mass)/(d**2)
-        force = force/massObj
-        attractX = force*cos(theta)
-        attractY = -force*sin(theta)
+        accel = force/massObj
+        attractX = accel*cos(theta)
+        attractY = -accel*sin(theta)
         return [attractX, attractY]

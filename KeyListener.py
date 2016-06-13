@@ -1,8 +1,7 @@
-from File import *
 from Maths import *
 
-defSpeed = convMeterToPixel(21000*1e10)
-maxSpeed = defSpeed*3
+defaultSpeed = convMeterToPixel(21000*1e10)
+maxSpeed = defaultSpeed*3
 
 speedScrollX = 0
 speedScrollY = 0
@@ -12,30 +11,29 @@ speedSpaceY = 0
 clicked = False
 mousePos = []
 
-"""'Clics' de souris"""
 def mouseClicked(event):
     global clicked, mousePos
     clicked=True
     mousePos=[event.x, event.y]
     
 def keyPressed(event) :
-    global speedSpaceX, speedSpaceY, defSpeed
+    global speedSpaceX, speedSpaceY, defaultSpeed
     
     key = event.keysym
     
     #Déplacements du vaisseau
     #Haut
     if key == "z" and speedSpaceY > -maxSpeed:
-        speedSpaceY -= defSpeed
+        speedSpaceY -= defaultSpeed
     #Bas
     if key == "s" and speedSpaceY < maxSpeed:
-        speedSpaceY += defSpeed
+        speedSpaceY += defaultSpeed
     #Gauche
     if key == "q" and speedSpaceX > -maxSpeed:
-        speedSpaceX -= defSpeed
+        speedSpaceX -= defaultSpeed
     #Droite
     if key == "d" and speedSpaceX < maxSpeed:
-        speedSpaceX += defSpeed
+        speedSpaceX += defaultSpeed
 
 def getSpeedScrollX() :
     return speedScrollX
@@ -43,22 +41,19 @@ def getSpeedScrollX() :
 def getSpeedScrollY() :
     return speedScrollY
 
-def setSpeedScrollX(speedScrollX_):
+def setSpeedScrollX(newSpeedScrollX):
     global speedScrollX
-    speedScrollX = speedScrollX_
+    speedScrollX = newSpeedScrollX
 
-def setSpeedScrollY(speedScrollY_):
+def setSpeedScrollY(newSpeedScrollY):
     global speedScrollY
-    speedScrollY = speedScrollY_
+    speedScrollY = newSpeedScrollY
     
 def getSpeedSpaceX() :
     return speedSpaceX
     
 def getSpeedSpaceY() :
     return speedSpaceY
-
-def getDefSpeed():
-    return defSpeed
 
 def getClicked():
     return clicked

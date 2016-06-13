@@ -3,6 +3,7 @@ from Spaceship import *
 from Frame import *
 from Maths import *
 from Point import *
+from File import *
 import time
 
 frame = Frame()
@@ -11,12 +12,12 @@ objects = []
 points = []
 
 soleil = Planet(None, "Soleil", 1.99e30, 1.39e6, 0, 0, 0)
-soleil.x = frame.frame.winfo_screenwidth()/2
-soleil.y = frame.frame.winfo_screenheight()/2
+soleil.x = frame.tkFrame.winfo_screenwidth()/2
+soleil.y = frame.tkFrame.winfo_screenheight()/2
 soleil.speedX = 0
 soleil.speedY = 0
 
-#parent, name, mass, diam, dist, speed, theta
+#Définition: parent, name, mass, diam, dist, speed, theta
 mercure = Planet(soleil, "Mercure", 3.29e23, 4.88e3, 5.79e10, 47879.56, 308)
 venus = Planet(soleil, "Venus", 4.87e24, 1.21e4, 1.08e11, 35057.23, 168)
 terre = Planet(soleil, "Terre", 5.97e24, 1.27e4, 1.49e11, 29846.70, 175)
@@ -47,7 +48,8 @@ sleepTime = 1/FPS
 elapsed = 0
 startloop = time.time()  
 
-def upPos():
+def checkScroll():
+    """Vérifie si le vaisseau est proche du bord pour activer le défilement"""
     offset = 100
     #Bord gauche
     if vaisseau.x < vaisseau.photo.width()/2 + offset:
@@ -72,7 +74,8 @@ while True:
     delta = time.time()-startloop
     startloop = time.time()
 
-    multipleTime = frame.time.get()*2.628e6 #Convertit les mois en secondes
+    #Convertit les mois en secondes
+    multipleTime = frame.cursorTime.get()*2.628e6 
     
     frame.univers.delete('all')
     
@@ -89,6 +92,8 @@ while True:
         points.append(Point(obj.x, obj.y))
         frame.draw(obj)
         frame.setInfos(round(soleil.x-vaisseau.x), round(soleil.y-vaisseau.y), elapsed)
+    
+    checkScroll()
         
     #Trajectoire des objets
     i=0
@@ -102,8 +107,6 @@ while True:
             points.remove(pt)
         i+=1
     
-    upPos()
-    
     #Si l'utilisateur a cliqué affiche les infos de la planète
     if getClicked():
         infoPlanet = getInfoPlanet(getPlanetClicked(objects, getMousePos()))
@@ -112,6 +115,6 @@ while True:
             frame.createPopup(infoPlanet)
         setClicked(False)
     
-    frame.frame.update()
+    frame.tkFrame.update()
     time.sleep(sleepTime)
     elapsed += delta*multipleTime

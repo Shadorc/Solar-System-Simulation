@@ -6,16 +6,16 @@ from Point import *
 class Frame():
     
     def __init__(self):
-        self.frame = Tk()
-        self.frame.title("Simulateur Système Solaire V2.0")
+        self.tkFrame = Tk()
+        self.tkFrame.title("Simulateur Système Solaire V2.0")
         #Affiche la fenêtre en plein écran
-        self.frame.state('zoomed')
+        self.tkFrame.state('zoomed')
         
-        self.frameW = self.frame.winfo_screenwidth()
-        self.frameH = self.frame.winfo_screenheight()
+        self.frameW = self.tkFrame.winfo_screenwidth()
+        self.frameH = self.tkFrame.winfo_screenheight()
 
         #Le panel principal
-        panel = PanedWindow(self.frame, orient=HORIZONTAL)
+        panel = PanedWindow(self.tkFrame, orient=HORIZONTAL)
         panel.pack(expand=1)
 
         #Le panel des options situé sur la gauche
@@ -28,8 +28,8 @@ class Frame():
         panelOptions.add(self.labelCoords)
 
         #Curseur modifiant la vitesse d'écoulement du temps
-        self.time = DoubleVar()
-        timeScale = Scale(panelOptions, from_=0, to=12, orient=HORIZONTAL, variable=self.time, sliderlength=20, label='mois/sec')
+        self.cursorTime = DoubleVar()
+        timeScale = Scale(panelOptions, from_=0, to=12, orient=HORIZONTAL, variable=self.cursorTime, sliderlength=20, label='mois/sec')
         timeScale.set(1)
         timeScale.pack()
         panelOptions.add(timeScale)
