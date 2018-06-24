@@ -1,21 +1,19 @@
-<h1>Simulation Système Solaire</h1>
+<h1>Solar System Simulation</h1>
 
 <h2>Introduction</h2>
-Simulation du système solaire réalisée à 4 en 6 jours dans le cadre d'un projet scolaire.
-Thème : L'astrophysique
+School project consisting of realising a simulation of the solar system.
+Carried out at 4 in 6 days.
+Theme: Astrophysics
 
-<h2>Contrôles :</h2>
+<h2>Controls:</h2>
 <ul>
-	<li>Mouvements : ZQSD</li>
+	<li>Movements: ZQSD</li>
 </ul>
 
 <h2>TODO :</h2>
 <ul>
-	<li>Réincorporer le Zoom</li>
-	<li>Gérer le cas des satellites comme la Lune</li>
-	<li>Ajouter plus d'options de configurations (vitesses initiales, masses des planètes, ...)</li>
-	<li>Corriger les problèmes d'arrondis</li>
+	<li>Re-incorporate Zoom</li>
+	<li>Manage the case of satellites like the Moon</li>
+	<li>Add more configuration options (initial speeds, planets masses, ...)</li>
+	<li>Correct rounding problems</li>
 </ul>
-
-<h2>Screenshot</h2>
-![Screenshot](http://i.imgur.com/neZDjq4.png)
